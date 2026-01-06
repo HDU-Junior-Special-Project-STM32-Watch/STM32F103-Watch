@@ -26,3 +26,9 @@ Listings/    # 列表文件目录
 # 5. 可选：若团队不需要同步 Keil 调试配置，可添加（谨慎使用）
 # *.uvoptx    # 工程选项文件（若改了编译配置需提交，建议不忽略）
 # *.uvproj    # 工程核心文件（必保留，仅忽略GUI相关）
+
+# 6. 本地 IDE/工具生成文件（按需开启）
+*.uvoptx     # Keil 本地选项缓存（不提交）
+.vscode/     # VS Code 工作区设置
+.idea/       # JetBrains 工具设置
+RTE/         # CMSIS-Pack 生成目录
