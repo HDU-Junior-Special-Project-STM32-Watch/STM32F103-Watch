@@ -186,7 +186,7 @@ uint8_t pre_selection = 0;
 //目标选项
 uint8_t targrt_selection;
 //上次选项的x坐标
-uint8_t x_pre = 48;
+int8_t x_pre = 48;
 //图标移动速度
 uint8_t Speed = 4;
 //移动标志位;1开始，0停止
@@ -213,7 +213,7 @@ void Menu_Animation(void)
 	{
 		x_pre += Speed;
 		//前一个图标右移到右边缘
-		if (x_pre == 96)
+		if (x_pre >= 96)
 		{
 			pre_selection --;
 			move_flag = 0;
@@ -229,7 +229,11 @@ void Menu_Animation(void)
 		OLED_ShowImage(x_pre - 96, 16, 32, 32, Menu_Graph[pre_selection - 2]);
 	}
 	OLED_ShowImage(x_pre, 16, 32, 32, Menu_Graph[pre_selection]);
-	OLED_ShowImage(x_pre + 48, 16, 32, 32, Menu_Graph[pre_selection + 1]);
+	
+	if (x_pre <= 49)
+	{
+		OLED_ShowImage(x_pre + 48, 16, 32, 32, Menu_Graph[pre_selection + 1]);
+	}
 	OLED_ShowImage(x_pre + 96, 16, 32, 32, Menu_Graph[pre_selection + 2]);
 	
 	OLED_Update();
