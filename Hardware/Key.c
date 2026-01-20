@@ -12,7 +12,7 @@
 所以此处的各个时间阈值最好都设置为20ms的倍数
 所以即使设定时间为50ms，但实际却会是60ms
 */
-#define KEY_Time_DOUBLE 		200
+#define KEY_Time_DOUBLE 		0
 #define KEY_Time_LONG			2000
 #define KEY_Time_REPEAT			100
 
@@ -60,7 +60,7 @@ uint8_t Key_GetState(uint8_t n)
 	//PA4确认键
 	else if (n == KEY_NAME_COMFIRM)
 	{
-		if (GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_4) == 1)//按下
+		if (GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_4) == 0)//按下
 		{
 		return KEY_PRESSED;
 		}

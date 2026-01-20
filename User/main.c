@@ -24,7 +24,7 @@ int main(void)
 		//跳转到菜单
 		if (clkflag1 == 1){}
 		//跳转到设置
-		else if (clkflag1 == 2){}
+		else if (clkflag1 == 2){SettingPage();}
 	}
 }
 
