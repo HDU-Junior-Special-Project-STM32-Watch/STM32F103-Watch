@@ -34,6 +34,7 @@ void TIM2_IRQHandler(void)
 	if (TIM_GetITStatus(TIM2, TIM_IT_Update) == SET)
 	{
 		Key_Tick();
+		StopWatch_Tick();
 		TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
 	}
 }
