@@ -103,15 +103,11 @@ uint8_t SetBrightness(void)
 		//确认键
 		else if (Key_Check(KEY_NAME_COMFIRM,KEY_SINGLE))
 		{
-			//清屏OLED，准备跳转
-			OLED_Clear();
-			OLED_Update();
-			
 			set_brightness_flag_temp = set_brightness_flag;
 		}
 		
 		//返回上一级菜单
-		if (set_brightness_flag_temp == 1){return 0;}
+		if (set_brightness_flag_temp == 1){OLED_Clear();return 0;}
 		//进入亮度设置
 		else if (set_brightness_flag_temp == 2){Set_OLED_Brightness();}
 			
