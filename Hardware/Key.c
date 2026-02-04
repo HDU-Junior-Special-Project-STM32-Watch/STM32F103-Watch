@@ -7,7 +7,7 @@
 #define KEY_PRESSED 			1
 #define	KEY_UNPRESSED			0
 
-//宏定义替换时间阈值
+// 宏定义替换时间阈值
 /*
 说明：由于按键检测和状态机代码每隔20ms才会执行一次
 所以此处的各个时间阈值最好都设置为20ms的倍数
@@ -17,7 +17,7 @@
 #define KEY_Time_LONG			2000
 #define KEY_Time_REPEAT			100
 
-uint8_t Key_Flag[KEY_COUNT];//不同的位表示不同的事件标志位
+uint8_t Key_Flag[KEY_COUNT];// 不同的位表示不同的事件标志位
 
 //-------------------------------------------------------------------------------------------------------------------
 // 函数简介     按键初始化
@@ -110,10 +110,10 @@ uint8_t Key_Check(uint8_t n, uint8_t Flag)
 //-------------------------------------------------------------------------------------------------------------------
 void Key_Tick(void)
 {
-	static uint8_t Count;// 定义静态变量
-	static uint8_t i;// 用于遍历,按键少时可以这么干
+	static uint8_t Count;			// 定义静态变量
+	static uint8_t i;				// 用于遍历,按键少时可以这么干
 	static uint8_t CurrState[KEY_COUNT],PrevState[KEY_COUNT];//Current,Previous
-	static uint8_t S[KEY_COUNT];// 状态变量，同江协状态转移图
+	static uint8_t S[KEY_COUNT];	// 状态变量，同江协状态转移图
 	static uint16_t Time[KEY_COUNT];// 长按/双击 计时器（此处递减计时）
 	// 静态变量默认值为0，函数退出后值不会丢失
 	
@@ -218,7 +218,6 @@ void Key_Tick(void)
 					S[i] = 4;
 				}
 			}
-		}
-		
+		}	
 	}
 }
