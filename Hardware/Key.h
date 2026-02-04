@@ -1,6 +1,7 @@
 #ifndef __KEY_H
 #define __KEY_H
 
+
 // 宏定义调换按键数量
 #define KEY_COUNT					3
 
@@ -22,8 +23,8 @@
 #define KEY_LONG				0x20
 #define KEY_REPEAT				0x40
 
-void Key_Init		(void);
-uint8_t Key_Check	(uint8_t n, uint8_t Flag);
-void Key_Tick		(void);
+void 	Key_Init		(void);
+uint8_t Key_Check		(uint8_t n, uint8_t Flag);
+void 	Key_Tick		(void);
 
 #endif

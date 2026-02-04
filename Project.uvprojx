@@ -730,6 +730,16 @@
               <FilePath>.\Hardware\StopWatch.h</FilePath>
             </File>
             <File>
+              <FileName>MyMPU6050.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\MyMPU6050.c</FilePath>
+            </File>
+            <File>
+              <FileName>MyMPU6050.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\MyMPU6050.h</FilePath>
+            </File>
+            <File>
               <FileName>OLED.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Hardware\OLED.c</FilePath>
@@ -803,16 +813,6 @@
               <FileName>MahonyAHRS.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Hardware\MahonyAHRS.h</FilePath>
-            </File>
-            <File>
-              <FileName>MyMPU6050.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Hardware\MyMPU6050.c</FilePath>
-            </File>
-            <File>
-              <FileName>MyMPU6050.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Hardware\MyMPU6050.h</FilePath>
             </File>
           </Files>
         </Group>
