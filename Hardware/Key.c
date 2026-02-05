@@ -18,7 +18,7 @@
 所以即使设定时间为50ms，但实际却会是60ms
 */
 #define KEY_Time_DOUBLE 		0
-#define KEY_Time_LONG			2000
+#define KEY_Time_LONG			1000
 #define KEY_Time_REPEAT			100
 
 uint8_t Key_Flag[KEY_COUNT];// 不同的位表示不同的事件标志位

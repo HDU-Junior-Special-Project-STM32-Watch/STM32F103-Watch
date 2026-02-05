@@ -51,17 +51,17 @@ int SetYear(void)// 年
 {
 	while(1)
 	{
-		// 上键，数值加1
-		if (Key_Check(KEY_NAME_UP,KEY_SINGLE))
+		// 上键单击/长按，数值加1
+		if (Key_Check(KEY_NAME_UP,KEY_SINGLE) || Key_Check(KEY_NAME_UP,KEY_REPEAT))
 		{
 			Change_RTC_Time(0, 1);
 		}
-		// 下键，数值减1
-		else if (Key_Check(KEY_NAME_DOWN,KEY_SINGLE))
+		// 下键单击/长按，数值减1
+		else if (Key_Check(KEY_NAME_DOWN,KEY_SINGLE) || Key_Check(KEY_NAME_DOWN,KEY_REPEAT))
 		{
 			Change_RTC_Time(0, 0);
 		}
-		// 确认键，退出
+		// 确认键单击，退出
 		else if (Key_Check(KEY_NAME_COMFIRM,KEY_SINGLE))
 		{
 			return 0;
@@ -77,19 +77,19 @@ int SetMonth(void)// 月
 {
 	while(1)
 	{
-		// 上键，数值加1
-		if (Key_Check(KEY_NAME_UP,KEY_SINGLE))
+		// 上键单击/长按，数值加1
+		if (Key_Check(KEY_NAME_UP,KEY_SINGLE) || Key_Check(KEY_NAME_UP,KEY_REPEAT))
 		{
 			Change_RTC_Time(1, 1);
 			if (MyRTC_Time[1] > 12){MyRTC_Time[1] = 1;MyRTC_SetTime();}
 		}
-		// 下键，数值减1
-		else if (Key_Check(KEY_NAME_DOWN,KEY_SINGLE))
+		// 下键单击/长按，数值减1
+		else if (Key_Check(KEY_NAME_DOWN,KEY_SINGLE) || Key_Check(KEY_NAME_DOWN,KEY_REPEAT))
 		{
 			Change_RTC_Time(1, 0);
 			if (MyRTC_Time[1] < 1){MyRTC_Time[1] = 12;MyRTC_SetTime();}
 		}
-		// 确认键，保存并退出
+		// 确认键单击，保存并退出
 		else if (Key_Check(KEY_NAME_COMFIRM,KEY_SINGLE))
 		{
 			return 0;
@@ -105,20 +105,20 @@ int SetDay(void)// 日
 {
 	while(1)
 	{
-		// 上键，数值加1
-		if (Key_Check(KEY_NAME_UP,KEY_SINGLE))
+		// 上键单击/长按，数值加1
+		if (Key_Check(KEY_NAME_UP,KEY_SINGLE) || Key_Check(KEY_NAME_UP,KEY_REPEAT))
 		{
 			Change_RTC_Time(2, 1);
 			// 不用额外判断一个月有几天，RTC函数自带判定
 			if (MyRTC_Time[2] > 31){MyRTC_Time[2] = 1;MyRTC_SetTime();}
 		}
-		// 下键，数值减1
-		else if (Key_Check(KEY_NAME_DOWN,KEY_SINGLE))
+		// 下键单击/长按，数值减1
+		else if (Key_Check(KEY_NAME_DOWN,KEY_SINGLE) || Key_Check(KEY_NAME_DOWN,KEY_REPEAT))
 		{
 			Change_RTC_Time(2, 0);
 			if (MyRTC_Time[2] < 1){MyRTC_Time[2] = 31;MyRTC_SetTime();}
 		}
-		// 确认键，保存并退出
+		// 确认键单击，保存并退出
 		else if (Key_Check(KEY_NAME_COMFIRM,KEY_SINGLE))
 		{
 			return 0;
@@ -134,20 +134,20 @@ int SetHour(void)// 时
 {
 	while(1)
 	{
-		// 上键，数值加1
-		if (Key_Check(KEY_NAME_UP,KEY_SINGLE))
+		// 上键单击/长按，数值加1
+		if (Key_Check(KEY_NAME_UP,KEY_SINGLE) || Key_Check(KEY_NAME_UP,KEY_REPEAT))
 		{
 			Change_RTC_Time(3, 1);
 			// 不用额外判断一个月有几天，RTC函数自带判定
 			if (MyRTC_Time[3] > 23){MyRTC_Time[3] = 0;MyRTC_SetTime();}
 		}
-		// 下键，数值减1
-		else if (Key_Check(KEY_NAME_DOWN,KEY_SINGLE))
+		// 下键单击/长按，数值减1
+		else if (Key_Check(KEY_NAME_DOWN,KEY_SINGLE) || Key_Check(KEY_NAME_DOWN,KEY_REPEAT))
 		{
 			Change_RTC_Time(3, 0);
 			if (MyRTC_Time[3] < 0){MyRTC_Time[3] = 23;MyRTC_SetTime();}
 		}
-		// 确认键，保存并退出
+		// 确认键单击，保存并退出
 		else if (Key_Check(KEY_NAME_COMFIRM,KEY_SINGLE))
 		{
 			return 0;
@@ -163,20 +163,20 @@ int SetMin(void)// 分
 {
 	while(1)
 	{
-		// 上键，数值加1
-		if (Key_Check(KEY_NAME_UP,KEY_SINGLE))
+		// 上键单击/长按，数值加1
+		if (Key_Check(KEY_NAME_UP,KEY_SINGLE) || Key_Check(KEY_NAME_UP,KEY_REPEAT))
 		{
 			Change_RTC_Time(4, 1);
 			// 不用额外判断一个月有几天，RTC函数自带判定
 			if (MyRTC_Time[4] >= 60){MyRTC_Time[4] = 0;MyRTC_SetTime();}
 		}
-		// 下键，数值减1
-		else if (Key_Check(KEY_NAME_DOWN,KEY_SINGLE))
+		// 下键单击/长按，数值减1
+		else if (Key_Check(KEY_NAME_DOWN,KEY_SINGLE) || Key_Check(KEY_NAME_DOWN,KEY_REPEAT))
 		{
 			Change_RTC_Time(4, 0);
 			if (MyRTC_Time[4] < 0){MyRTC_Time[4] = 59;MyRTC_SetTime();}
 		}
-		// 确认键，保存并退出
+		// 确认键单击，保存并退出
 		else if (Key_Check(KEY_NAME_COMFIRM,KEY_SINGLE))
 		{
 			return 0;
@@ -191,21 +191,21 @@ int SetMin(void)// 分
 int SetSec(void)// 秒
 {
 		while(1)
-	{
-		// 上键，数值加1
-		if (Key_Check(KEY_NAME_UP,KEY_SINGLE))
+		{
+		// 上键单击/长按，数值加1
+		if (Key_Check(KEY_NAME_UP,KEY_SINGLE) || Key_Check(KEY_NAME_UP,KEY_REPEAT))
 		{
 			Change_RTC_Time(5, 1);
 			// 不用额外判断一个月有几天，RTC函数自带判定
 			if (MyRTC_Time[5] >= 60){MyRTC_Time[5] = 0;MyRTC_SetTime();}
 		}
-		// 下键，数值减1
-		else if (Key_Check(KEY_NAME_DOWN,KEY_SINGLE))
+		// 下键单击/长按，数值减1
+		else if (Key_Check(KEY_NAME_DOWN,KEY_SINGLE) || Key_Check(KEY_NAME_DOWN,KEY_REPEAT))
 		{
 			Change_RTC_Time(5, 0);
 			if (MyRTC_Time[5] < 0){MyRTC_Time[5] = 59;MyRTC_SetTime();}
 		}
-		// 确认键，保存并退出
+		// 确认键单击，保存并退出
 		else if (Key_Check(KEY_NAME_COMFIRM,KEY_SINGLE))
 		{
 			return 0;
