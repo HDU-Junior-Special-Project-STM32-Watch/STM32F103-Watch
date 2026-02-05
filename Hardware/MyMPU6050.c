@@ -21,8 +21,8 @@
 /*******************************************************************************************************************/
 
 volatile float Pitch = 0.0f, 
-				Roll  = 0.0f, 
-				Yaw   = 0.0f;
+			   Roll  = 0.0f, 
+			   Yaw   = 0.0f;
 // 欧拉角系数
 const float roll_k  = 1.0f,
 			pitch_k = 90.0f /85.0f,
@@ -46,13 +46,13 @@ void Show_MPU6050_UI(void)
 /*******************************************************************************************************************/
 
 // 零飘校准目标样本数
-#define CALI_TARGET_SAMPLES	200
+#define CALI_TARGET_SAMPLES	500
 
 // 零飘校准计数
-uint8_t Cali_count = 0;
+static uint16_t Cali_count = 0;
 // 零飘校准平均值
-float ax_bias = 0.0f, ay_bias = 0.0f, az_bias = 0.0f;
-float gx_bias = 0.0f, gy_bias = 0.0f, gz_bias = 0.0f;
+//static float ax_bias = 0.0f, ay_bias = 0.0f, az_bias = 0.0f;
+static float gx_bias = 0.0f, gy_bias = 0.0f, gz_bias = 0.0f;
 
 // 枚举定义动态校准状态
 typedef enum {
@@ -75,7 +75,9 @@ void MPU6050_Calibration_Start(void)
     cali_state = CALI_STATE_RUNNING;  
     Cali_count = 0;
     // 数据重置
-	ax_bias = ay_bias = az_bias = gx_bias = gy_bias = gz_bias = 0.0f;
+//	ax_bias = ay_bias = az_bias = 0.0f;
+	gx_bias = gy_bias = gz_bias = 0.0f;
+	
 }
 
 //-------------------------------------------------------------------------------------------------------------------
@@ -95,9 +97,9 @@ uint8_t MPU6050_Calibration_Check(void)
 		MPU6050_GetData(&AX, &AY, &AZ, &GX, &GY, &GZ);
 		
 		// 误差累计
-		gx_bias += GX / 16.4f * (3.14159f / 180.0f);
-		gy_bias += GY / 16.4f * (3.14159f / 180.0f);
-		gz_bias += GZ / 16.4f * (3.14159f / 180.0f);
+		gx_bias += GX / 16.4f * (pi / 180.0f);
+		gy_bias += GY / 16.4f * (pi / 180.0f);
+		gz_bias += GZ / 16.4f * (pi / 180.0f);
 		Cali_count ++;
 		
 		// 样本达标
@@ -132,19 +134,19 @@ uint8_t MPU6050_Calibration_Check(void)
 //-------------------------------------------------------------------------------------------------------------------
 extern volatile float q0, q1, q2, q3;
 
-void quat2euler(float q0,float q1,float q2,float q3,
-				float* phi, float* theta, float* psi)
+void quat2euler(float q_0, float q_1, float q_2, float q_3,
+				volatile float* phi, volatile float* theta, volatile float* psi)
 {
     float R[3][3];
-    R[0][0] = 1 - 2 * (q2 * q2 + q3 * q3);
-    R[0][1] = 2 * (q1 * q2 - q0 * q3);
-    R[0][2] = 2 * (q0 * q2 + q1 * q3);
-    R[1][0] = 2 * (q1 * q2 + q0 * q3);
-    R[1][1] = 1 - 2 * (q1 * q1 + q3 * q3);
-    R[1][2] = 2 * (q2 * q3 - q0 * q1);
-    R[2][0] = 2 * (q1 * q3 - q0 * q2);
-    R[2][1] = 2 * (q0 * q1 + q2 * q3);
-    R[2][2] = 1 - 2 * (q1 * q1 + q2 * q2);
+    R[0][0] = 1 - 2 * (q_2 * q_2 + q_3 * q_3);
+    R[0][1] = 2 * (q_1 * q_2 - q_0 * q_3);
+    R[0][2] = 2 * (q_0 * q_2 + q_1 * q_3);
+    R[1][0] = 2 * (q_1 * q_2 + q_0 * q_3);
+    R[1][1] = 1 - 2 * (q_1 * q_1 + q_3 * q_3);
+    R[1][2] = 2 * (q_2 * q_3 - q_0 * q_1);
+    R[2][0] = 2 * (q_1 * q_3 - q_0 * q_2);
+    R[2][1] = 2 * (q_0 * q_1 + q_2 * q_3);
+    R[2][2] = 1 - 2 * (q_1 * q_1 + q_2 * q_2);
 
     *phi   = atan2( R[2][1], R[2][2]);
     *theta = asin (-R[2][0]);
@@ -154,8 +156,6 @@ void quat2euler(float q0,float q1,float q2,float q3,
     *theta = *theta * 180.0f / pi;
     *psi   = *psi   * 180.0f / pi;
 }
-
-
 
 //-------------------------------------------------------------------------------------------------------------------
 // 函数简介     姿态解算整合
@@ -179,6 +179,7 @@ void MPU6050_Calculation(void)
 	
 	quat2euler(q0, q1, q2, q3, &Roll, &Pitch, &Yaw); 
 }
+
 /*******************************************************************************************************************/
 /*[E] 姿态解算 [E]-------------------------------------------------------------------------------------------------*/
 /*******************************************************************************************************************/
@@ -192,27 +193,31 @@ int MPU6050(void)
 	OLED_Clear();
 	Show_MPU6050_UI();
 	OLED_ReverseArea(0, 0, 16, 16);	
-	OLED_ShowString(79, 0, "校准中", OLED_8X16);
 	OLED_Update();
 	
+
 	/* mpu6050零飘校准逻辑(此时请保持静止)*/
-	MPU6050_Calibration_Start();
-	
+	if (cali_state == CALI_STATE_SPARE)
+	{
+		MPU6050_Calibration_Start();	
+		OLED_ShowString(79, 0, "校准中", OLED_8X16);
+		OLED_Update();
+	}
 	// 半阻塞式零飘校准
 	while(1)  
-    {
-        if (MPU6050_Calibration_Check() == 0)  // 零飘校准完成
-        {
-            break;  // 跳出零飘校准循环，往下执行
-        }       
-        // 可以考虑在这里操作OLED，但也请注意时间占用
-        
-        // 强制零飘校准退出
-        if(Key_Check(KEY_NAME_COMFIRM,KEY_SINGLE))
+	{
+		if (MPU6050_Calibration_Check() == 0)  // 零飘校准完成
 		{
-            break;  // 退出零飘校准模式
-        }       
-    }
+			break;  // 跳出零飘校准循环，往下执行
+		}       
+		// 可以考虑在这里操作OLED，但也请注意时间占用
+		
+		// 强制零飘校准退出
+		if(Key_Check(KEY_NAME_COMFIRM,KEY_SINGLE))
+		{
+			break;  // 退出零飘校准模式
+		}
+	}
 	
 	
 	
@@ -247,8 +252,7 @@ int MPU6050(void)
 			OLED_Update();
 	
 			/* mpu6050零飘校准逻辑(此时请保持静止)*/
-			MPU6050_Calibration_Start();
-			
+			MPU6050_Calibration_Start();			
 			// 半阻塞式零飘校准
 			while(1)  
 			{
@@ -294,6 +298,5 @@ int MPU6050(void)
 			
 				break;
 		}
-		
 	}
 }
