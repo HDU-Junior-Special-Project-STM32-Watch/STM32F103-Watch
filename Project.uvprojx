@@ -740,6 +740,16 @@
               <FilePath>.\Hardware\MyMPU6050.h</FilePath>
             </File>
             <File>
+              <FileName>param_config.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\param_config.c</FilePath>
+            </File>
+            <File>
+              <FileName>param_config.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\param_config.h</FilePath>
+            </File>
+            <File>
               <FileName>OLED.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Hardware\OLED.c</FilePath>

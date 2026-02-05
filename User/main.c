@@ -3,24 +3,25 @@
 #include "Delay.h"
 #include "Timer.h"
 
-#include "OLED.h"
 #include "menu.h"
+#include "OLED.h"
+#include "param_config.h"
+
 
 int main(void)
 {
 	/* OLED初始化*/
 	OLED_Init();
+	OLED_Clear();
 	
 	/* 外设初始化*/
 	Peripheral_Init();
 	
 	/* 1ms定时器定时中断初始化*/
-	Timer_Init();
-	
-	OLED_Clear();
+	Timer_Init();	
 	
 	// 首页选项标志位
-	uint8_t clkflag1;
+	uint8_t clkflag1 = 0;
 	
 	while (1)
 	{
@@ -33,6 +34,8 @@ int main(void)
 	}
 }
 
+uint16_t Time_Count = 0;
+
 /* TIM2定时器1ms定时中断*/
 void TIM2_IRQHandler(void)
 {
@@ -40,6 +43,14 @@ void TIM2_IRQHandler(void)
 	{
 		Key_Tick();
 		StopWatch_Tick();
+		
+		Time_Count ++;
+		if (Time_Count >= 2)
+		{
+			Time_Count = 0;
+			MPU6050_ANALYSIS_ENABLE = 1;			
+		}
+		
 		TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
 	}
 }
