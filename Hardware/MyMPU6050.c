@@ -56,9 +56,9 @@ static float gx_bias = 0.0f, gy_bias = 0.0f, gz_bias = 0.0f;
 
 // 枚举定义动态校准状态
 typedef enum {
-    CALI_STATE_SPARE   = 0,     				// 备用/未开始状态
-    CALI_STATE_RUNNING = 1,   					// 校准进行中
-    CALI_STATE_DONE    = 2       				// 校准完成
+    CALI_STATE_SPARE   = 0,     				// 未校准
+    CALI_STATE_RUNNING = 1,   					// 校准中
+    CALI_STATE_DONE    = 2       				// 已校准
 } Cali_State_t;
 
 static Cali_State_t cali_state = CALI_STATE_SPARE;
@@ -82,11 +82,21 @@ void MPU6050_Calibration_Start(void)
 
 //-------------------------------------------------------------------------------------------------------------------
 // 函数简介     校准进程函数
+// 返回参数 	返回校准状态（数字对应CCali_State_t的枚举定义）
+// 返回参数		0 	未校准
+// 返回参数 	1 	校准中
+// 返回参数 	2 	已校准
 //-------------------------------------------------------------------------------------------------------------------
 uint8_t MPU6050_Calibration_Check(void)
 {
-	// 如果不在校准状态，直接返回0
-    if(cali_state != CALI_STATE_RUNNING)
+	// 如果已校准，返回当前校准状态为2
+    if(cali_state == CALI_STATE_DONE)
+	{
+        return 2;
+    }
+	
+	// 如果未校准，返回当前校准状态为0
+	if(cali_state == CALI_STATE_SPARE)
 	{
         return 0;
     }
@@ -94,6 +104,7 @@ uint8_t MPU6050_Calibration_Check(void)
 	// 是否可以统计数据
 	if (MPU6050_ANALYSIS_ENABLE)
 	{
+		// 读取原始数据
 		MPU6050_GetData(&AX, &AY, &AZ, &GX, &GY, &GZ);
 		
 		// 误差累计
@@ -115,8 +126,8 @@ uint8_t MPU6050_Calibration_Check(void)
 		MPU6050_ANALYSIS_ENABLE = 0;
 	}
 	
-	// 返回当前校准状态
-    return (cali_state == CALI_STATE_RUNNING);
+	// 如果在校准，返回当前校准状态为1
+    return 1;
 }
 
 /*******************************************************************************************************************/
@@ -197,7 +208,7 @@ int MPU6050(void)
 	
 
 	/* mpu6050零飘校准逻辑(此时请保持静止)*/
-	if (cali_state == CALI_STATE_SPARE)
+	if (MPU6050_Calibration_Check() != 2)// 如果未校准
 	{
 		MPU6050_Calibration_Start();	
 		OLED_ShowString(79, 0, "校准中", OLED_8X16);
@@ -206,7 +217,7 @@ int MPU6050(void)
 	// 半阻塞式零飘校准
 	while(1)  
 	{
-		if (MPU6050_Calibration_Check() == 0)  // 零飘校准完成
+		if (MPU6050_Calibration_Check() == 2)  // 零飘校准完成
 		{
 			break;  // 跳出零飘校准循环，往下执行
 		}       
@@ -256,7 +267,7 @@ int MPU6050(void)
 			// 半阻塞式零飘校准
 			while(1)  
 			{
-				if (MPU6050_Calibration_Check() == 0)  // 零飘校准完成
+				if (MPU6050_Calibration_Check() == 2)  // 零飘校准完成
 				{
 					break;  // 跳出零飘校准循环，往下执行
 				}				
