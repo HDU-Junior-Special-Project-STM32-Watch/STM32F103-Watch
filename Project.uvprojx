@@ -824,6 +824,16 @@
               <FileType>5</FileType>
               <FilePath>.\Hardware\MahonyAHRS.h</FilePath>
             </File>
+            <File>
+              <FileName>Roll_Clock.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\Roll_Clock.c</FilePath>
+            </File>
+            <File>
+              <FileName>Roll_Clock.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\Roll_Clock.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

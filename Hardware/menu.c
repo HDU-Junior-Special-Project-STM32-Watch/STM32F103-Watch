@@ -10,6 +10,7 @@
 #include "SetBrightness.h"				// [设置]亮度设置模块
 #include "StopWatch.h"					// [菜单]秒表模块
 #include "MyMPU6050.h"					// [菜单]姿态解算模块
+#include "Roll_Clock.h"					// 滚动显示时间模块
 
 #include "Menu.h"
 
@@ -34,20 +35,36 @@ void Peripheral_Init(void)
 /*[S] 首页时钟界面 [S]---------------------------------------------------------------------------------------------*/
 /*******************************************************************************************************************/
 
+
+// 使用滚动显示时间的开关
+#define ROLL_CLOCK_ENABLE		1
+
+
 /* 界面样式*/
-void Show_Clock_UI(void)
+void Show_Clock_UI(uint8_t clkflag)
 {
 	// 读取RTC时间
 	MyRTC_ReadTime();
+		
+	// 显示时分秒(屏幕中央)
+#if ROLL_CLOCK_ENABLE 
+	Roll_Clock();
+#else
+	OLED_Printf(16, 16, OLED_12X24 , "%02d:%02d:%02d", MyRTC_Time[3], MyRTC_Time[4], MyRTC_Time[5]);
+	OLED_UpdateArea(16, 16, 96, 24);
+#endif
 	
+		OLED_Clear();
 	// 显示年月日(屏幕左上角)
 	OLED_Printf(0, 0, OLED_6X8, "%d-%d-%d", MyRTC_Time[0], MyRTC_Time[1], MyRTC_Time[2]);
-	// 显示时分秒(屏幕中央)
-	OLED_Printf(16, 16, OLED_12X24 , "%02d:%02d:%02d", MyRTC_Time[3], MyRTC_Time[4], MyRTC_Time[5]);
 	// 显示"菜单"(屏幕左下角)16X16
 	OLED_ShowString(0, 48, "菜单", OLED_8X16);
 	// 显示"设置"(屏幕右下角)16X16
 	OLED_ShowString(96, 48, "设置", OLED_8X16);
+	if (clkflag == 1){OLED_ReverseArea(0, 48, 32, 16);}
+	else {OLED_ReverseArea(96, 48, 32, 16);}
+	OLED_UpdateArea(0, 48, 128, 16);
+	OLED_UpdateArea(0, 0, 60, 8);
 }
 
 // 首页选项标志位
@@ -58,6 +75,8 @@ uint8_t clkflag = 1;
 /* 交互界面*/
 int First_Page_Clock(void)
 {
+	Roll_Clock_Init();
+	
 	while(1)
 	{
 		/* 按键处理*/
@@ -81,28 +100,9 @@ int First_Page_Clock(void)
 			return clkflag;
 		}
 		
-		/* 显示更新*/
-		switch(clkflag)
-		{
-			// 光标在[菜单]
-			case 1:
-			{
-				Show_Clock_UI();
-				OLED_ReverseArea(0, 48, 32, 16);
-				OLED_Update();
-				
-				break;
-			}
-			// 光标在[设置]
-			case 2:
-			{
-				Show_Clock_UI();
-				OLED_ReverseArea(96, 48, 32, 16);
-				OLED_Update();
-				
-				break;
-			}
-		}
+		
+		/* 显示更新*/	
+		Show_Clock_UI(clkflag);
 	}
 }
 /*******************************************************************************************************************/

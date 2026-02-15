@@ -4,8 +4,12 @@
 ---
 
 #### 项目参考
+### 项目主干
 - 【STM32手表教程（全网最详细!)】https://www.bilibili.com/video/BV1CoGuzEEeN?p=2&vd_source=befff269c2e0ef1583e2528659770521
 - 教程Github链接：https://github.com/BQT0411/STM32-WATCH
+### 部分参考
+- 【【DIY手表】stm32的oled环境监测手表（已开源）】 https://www.bilibili.com/video/BV1oF411E7kr/?share_source=copy_web&vd_source=befff269c2e0ef1583e2528659770521
+- 【【开源】oled 滚动时钟 3.0 版本，全新字体，代码精简，移植方便】 https://www.bilibili.com/video/BV1PpcEz5EUo/?share_source=copy_web&vd_source=befff269c2e0ef1583e2528659770521
 
 ---
 
@@ -78,6 +82,7 @@
 - 2026.2.5.17:34(YXZ):重做校准
 - 2026.2.5.21:33(YXZ):MPU6050上电后只进行一次强制校准
 - 2026.2.12.23:31(YXZ):MPU6050校准返回修整
+- 2026.2.15.23:33(YXZ):移植了时钟滚动显示，每次显示时钟整个界面时，时钟会延迟出现显示，暂时没想到怎么解决
 
 #### ??分支
 - 

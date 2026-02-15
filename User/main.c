@@ -6,6 +6,7 @@
 #include "menu.h"
 #include "OLED.h"
 #include "param_config.h"
+#include "StopWatch.h"
 
 
 int main(void)
@@ -22,7 +23,7 @@ int main(void)
 	
 	// 首页选项标志位
 	uint8_t clkflag1 = 0;
-	
+		
 	while (1)
 	{
 		// 等待返回[菜单]和[设置]中的选择(逻辑位于"menu.c")
