@@ -75,8 +75,11 @@ uint8_t clkflag = 1;
 /* 交互界面*/
 int First_Page_Clock(void)
 {
+#if ROLL_CLOCK_ENABLE
 	Roll_Clock_Init();
-	
+	OLED_UpdateArea(16, 16, 96, 24);
+#endif	
+
 	while(1)
 	{
 		/* 按键处理*/

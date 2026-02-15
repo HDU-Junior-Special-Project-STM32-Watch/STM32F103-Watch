@@ -22,8 +22,7 @@ void Roll_Clock_Init(void)
 	Sec.Last=MyRTC_Time[5];
 	Min.Last=MyRTC_Time[4];
 	Hour.Last=MyRTC_Time[3];
-	OLED_ShowChar(42,24,':',OLED_8X16);
-	OLED_ShowChar(78,24,':',OLED_8X16);
+	OLED_Printf(16, 16, OLED_12X24 , "%02d:%02d:%02d", MyRTC_Time[3], MyRTC_Time[4], MyRTC_Time[5]);
 }
 
 void OLED_Roll(void)
