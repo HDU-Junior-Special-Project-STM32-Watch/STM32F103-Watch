@@ -11,10 +11,15 @@
 #define KEY_PRESSED 			1
 #define	KEY_UNPRESSED			0
 
-// 宏定义替换时间阈值（定时中断周期10ms）
+// 宏定义替换时间阈值（定时中断周期1ms）
+/*
+说明：按键状态机每10ms执行一次
+所以此处的各个时间阈值最好都设置为10ms的倍数
+如实际判定可能有±1ms偏差
+*/
 #define KEY_Time_DOUBLE 		0
-#define KEY_Time_LONG			100		// 100 * 10ms = 1s 长按
-#define KEY_Time_REPEAT			10		// 10 * 10ms = 0.1s 连击
+#define KEY_Time_LONG			1000	// 1000 * 1ms = 1s 长按
+#define KEY_Time_REPEAT			100		// 100 * 1ms = 0.1s 连击
 
 uint8_t Key_Flag[KEY_COUNT];// 不同的位表示不同的事件标志位
 
@@ -123,8 +128,8 @@ void Key_Tick(void)
 			Time[i] --;
 		}
 	}
-	Count++;// 计数分频（10ms * 2 = 20ms 按键扫描周期）
-	if (Count >= 2)
+	Count++;// 计数分频（1ms * 10 = 10ms 按键扫描周期）
+	if (Count >= 10)// 可过滤按键抖动，按需调整
 	{
 		Count = 0 ;
 		

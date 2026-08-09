@@ -29,7 +29,7 @@
 // 宏定义
 //-------------------------------------------------------------------------------------------------------------------
 
-#define sampleFreq	500.0f			// sample frequency in Hz
+#define sampleFreq	100.0f			// sample frequency in Hz
 									// 采样频率，单位为赫兹(Hz)
 #define twoKpDef	(2.0f * 50.0f)	// 2 * proportional gain
 									// 2倍的比例增益（Kp）

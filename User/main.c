@@ -46,9 +46,13 @@ void TIM2_IRQHandler(void)
 		StopWatch_Tick();
 		
 		Time_Count ++;
-		if (Time_Count >= 2)
+		if (Time_Count >= 10)
 		{
 			Time_Count = 0;
+		}
+		// 姿态解算与按键扫描错峰5ms：按键在TC≈9, 姿态在TC==5
+		if (Time_Count == 5)
+		{
 			MPU6050_ANALYSIS_ENABLE = 1;			
 		}
 		
