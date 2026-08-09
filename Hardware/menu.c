@@ -83,17 +83,17 @@ int First_Page_Clock(void)
 	while(1)
 	{
 		/* 按键处理*/
-		if (Key_Check(KEY_NAME_UP,KEY_SINGLE))// 上键
+		if (Key_Check(KEY_NAME_UP,KEY_SINGLE))// 上键 短按
 		{
 			clkflag --;
 			if (clkflag < 1) clkflag = 2;
 		}		
-		else if (Key_Check(KEY_NAME_DOWN,KEY_SINGLE))// 下键
+		else if (Key_Check(KEY_NAME_DOWN,KEY_SINGLE))// 下键 短按
 		{
 			clkflag ++;
 			if (clkflag > 2) clkflag = 1;
-		}		
-		else if (Key_Check(KEY_NAME_COMFIRM,KEY_SINGLE))// 确认键
+		}
+		else if (Key_Check(KEY_NAME_COMFIRM,KEY_SINGLE))// 确认键 短按
 		{
 			// 清屏OLED，准备跳转
 			OLED_Clear();
@@ -101,6 +101,11 @@ int First_Page_Clock(void)
 			
 			// 返回[菜单]和[设置]中的选择(对象位于"main.c")
 			return clkflag;
+		}
+		else if (Key_Check(KEY_NAME_COMFIRM,KEY_LONG))// 确认键 长按
+		{
+			GPIO_ResetBits(GPIOB, GPIO_Pin_13);// 拉低CTL引脚（PB13),单片机关机
+			GPIO_SetBits(GPIOB, GPIO_Pin_12);// 拉高BAT_ADC_EN引脚（PB12),ADC检测电路断开
 		}
 		
 		

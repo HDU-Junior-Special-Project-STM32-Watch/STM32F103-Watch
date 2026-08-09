@@ -17,11 +17,13 @@ void LED_Init(void)
 	
 	GPIO_InitTypeDef GPIO_InitStructure;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_15;
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_15|GPIO_Pin_12|GPIO_Pin_13;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(GPIOB,&GPIO_InitStructure);
 	
-	GPIO_SetBits(GPIOB, GPIO_Pin_15);
+	GPIO_SetBits(GPIOB, GPIO_Pin_15);    // LED熄灭（高电平，LED是灌电流驱动）
+	GPIO_ResetBits(GPIOB, GPIO_Pin_12);  // PB12拉低 → 使能电池ADC检测电路
+	GPIO_SetBits(GPIOB, GPIO_Pin_13);    // PB13(CTL)拉高 → 维持PMOS电源自锁
 }
 
 //-------------------------------------------------------------------------------------------------------------------

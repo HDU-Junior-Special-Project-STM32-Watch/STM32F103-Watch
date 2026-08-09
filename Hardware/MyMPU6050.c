@@ -46,12 +46,11 @@ void Show_MPU6050_UI(void)
 /*******************************************************************************************************************/
 
 // 零飘校准目标样本数
-#define CALI_TARGET_SAMPLES	500
+#define CALI_TARGET_SAMPLES	400
 
 // 零飘校准计数
 static uint16_t Cali_count = 0;
 // 零飘校准平均值
-//static float ax_bias = 0.0f, ay_bias = 0.0f, az_bias = 0.0f;
 static float gx_bias = 0.0f, gy_bias = 0.0f, gz_bias = 0.0f;
 
 // 枚举定义动态校准状态
@@ -75,7 +74,6 @@ void MPU6050_Calibration_Start(void)
     cali_state = CALI_STATE_RUNNING;  
     Cali_count = 0;
     // 数据重置
-//	ax_bias = ay_bias = az_bias = 0.0f;
 	gx_bias = gy_bias = gz_bias = 0.0f;
 	
 }
@@ -205,31 +203,6 @@ int MPU6050(void)
 	Show_MPU6050_UI();
 	OLED_ReverseArea(0, 0, 16, 16);	
 	OLED_Update();
-	
-
-	/* mpu6050零飘校准逻辑(此时请保持静止)*/
-	if (MPU6050_Calibration_Check() != 2)// 如果未校准
-	{
-		MPU6050_Calibration_Start();	
-		OLED_ShowString(79, 0, "校准中", OLED_8X16);
-		OLED_Update();
-	}
-	// 半阻塞式零飘校准
-	while(1)  
-	{
-		if (MPU6050_Calibration_Check() == 2)  // 零飘校准完成
-		{
-			break;  // 跳出零飘校准循环，往下执行
-		}       
-		// 可以考虑在这里操作OLED，但也请注意时间占用
-		
-		// 强制零飘校准退出
-		if(Key_Check(KEY_NAME_COMFIRM,KEY_SINGLE))
-		{
-			break;  // 退出零飘校准模式
-		}
-	}
-	
 	
 	
 	while(1)
