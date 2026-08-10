@@ -1,5 +1,5 @@
-#ifndef __MPU6050_REG_H
-#define __MPU6050_REG_H
+#ifndef __MPU6050_REG_H__
+#define __MPU6050_REG_H__
 
 #define	MPU6050_SMPLRT_DIV		0x19
 #define	MPU6050_CONFIG			0x1A

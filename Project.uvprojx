@@ -869,6 +869,16 @@
               <FileType>5</FileType>
               <FilePath>.\App\MahonyAHRS.h</FilePath>
             </File>
+            <File>
+              <FileName>LEDFlashlight.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\App\LEDFlashlight.c</FilePath>
+            </File>
+            <File>
+              <FileName>LEDFlashlight.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\App\LEDFlashlight.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

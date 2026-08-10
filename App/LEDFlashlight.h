@@ -1,13 +1,13 @@
 /*******************************************************************************
-[设置]亮度设置界面
+[菜单]LED手电筒界面
 *******************************************************************************/
 
 
-#ifndef __SETBRIGHTNESS_H
-#define __SETBRIGHTNESS_H
+#ifndef __LEDFLASHLIGHT_H__
+#define __LEDFLASHLIGHT_H__
 
 #include <stdint.h>
 
-uint8_t		SetBrightness		(void);
+int LED_Flashlight(void);
 
 #endif

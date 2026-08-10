@@ -1,5 +1,5 @@
-#ifndef __OLED_DATA_H
-#define __OLED_DATA_H
+#ifndef __OLED_DATA_H__
+#define __OLED_DATA_H__
 
 #include <stdint.h>
 

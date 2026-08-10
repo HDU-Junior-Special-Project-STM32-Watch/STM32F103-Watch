@@ -1,3 +1,8 @@
+/*******************************************************************************
+公共头文件
+*******************************************************************************/
+
+
 #ifndef __COMMON_HEADFILE_H__
 #define __COMMON_HEADFILE_H__
 
@@ -10,6 +15,7 @@
 #include "StopWatch.h"
 #include "MyMPU6050.h"
 #include "Roll_Clock.h"
+#include "LEDFlashlight.h"
 
 /* 驱动层 */
 #include "OLED.h"

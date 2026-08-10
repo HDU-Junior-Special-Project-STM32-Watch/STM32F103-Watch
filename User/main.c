@@ -33,9 +33,9 @@ int main(void)
 			begin_flag = 0;
 		}
 		// 跳转到[菜单]
-		if (clkflag1 == 1){Menu();}
+		if (clkflag1 == 1){Menu();Key_Check(KEY_NAME_COMFIRM,KEY_LONG);}
 		// 跳转到[设置]
-		else if (clkflag1 == 2){SettingPage();}
+		else if (clkflag1 == 2){SettingPage();Key_Check(KEY_NAME_COMFIRM,KEY_LONG);}
 	}
 }
 
