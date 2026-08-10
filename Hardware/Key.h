@@ -1,6 +1,7 @@
 #ifndef __KEY_H
 #define __KEY_H
 
+#include <stdint.h>
 
 // 宏定义调换按键数量
 #define KEY_COUNT					3

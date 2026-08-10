@@ -1,6 +1,7 @@
 #ifndef __MYMPU6050_H
 #define __MYMPU6050_H
 
+#include <stdint.h>
 
 // MPU6050解算使能标志位
 extern uint8_t MPU6050_ANALYSIS_ENABLE;

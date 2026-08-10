@@ -1,6 +1,7 @@
 #ifndef __MPU6050_H
 #define __MPU6050_H
 
+#include <stdint.h>
 
 void 	MPU6050_Init		(void);
 uint8_t MPU6050_GetID		(void);

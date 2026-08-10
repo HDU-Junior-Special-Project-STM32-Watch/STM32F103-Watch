@@ -13,6 +13,7 @@ void Peripheral_Init(void)
 	LED_Init();
 	Key_Init();
 	MPU6050_Init();
+	AD_Init();
 }
 /*******************************************************************************************************************/
 /*[E] 外设初始化 [E]-----------------------------------------------------------------------------------------------*/
@@ -27,6 +28,49 @@ void Peripheral_Init(void)
 // 使用滚动显示时间的开关
 #define ROLL_CLOCK_ENABLE		1
 
+uint16_t AD_Value = 0;
+float VBAT = 0.0f;
+int Battery_Capacity = 0;
+// 实际上ADC拿到的是 1KΩ(靠近VCC) 和 4.4KΩ(靠近GND) 串联电阻中4.4KΩ 拿到的电压
+// 教程设计的4KΩ被将就为4.4KΩ
+// ADC检测到的电池电压范围为 2.68 ~ 3.34V (对应电池的 3.3 ~ 4.1V)
+// 数值上为 [0%]3049 ~ [100%]4096 (实际值4145超出量程，仍然认定4096也是100%)
+
+/* 电池电量显示 */
+void Show_Battery(void)
+{
+	int sum = 0;
+	for (int i = 0;i < 1000; i ++)
+	{
+		AD_Value = AD_GetValue();
+		sum += AD_Value;
+	}
+	AD_Value = sum / 1000;
+	VBAT = (float)AD_Value/4095*3.3;
+	Battery_Capacity = (AD_Value - 3049)*100/1047;
+	if (Battery_Capacity < 0)Battery_Capacity = 0;
+	
+	
+//	OLED_ShowNum( 64,  0 , AD_Value, 4, OLED_6X8);
+//	OLED_Printf( 64,  8, OLED_6X8, "VBAT:%.2f", VBAT);
+	OLED_ShowNum( 85,  4 , Battery_Capacity, 3, OLED_6X8);
+	OLED_ShowChar(103,  4, '%', OLED_6X8);
+	
+	if (Battery_Capacity == 100){OLED_ShowImage(110,  0, 16, 16, Battery);}
+	else if (10 <= Battery_Capacity && Battery_Capacity < 100)
+	{
+		OLED_ShowImage(110,  0, 16, 16, Battery);
+		OLED_ClearArea((112 + Battery_Capacity/10),  5, (10 - Battery_Capacity/10), 6);
+		OLED_ClearArea( 85,  4,  6,  8);
+	}
+	else
+	{
+		OLED_ShowImage(110,  0, 16, 16, Battery);
+		OLED_ClearArea(112,  5, 10,  6);
+		OLED_ClearArea( 85,  4, 12,  8);
+	}
+
+}
 
 /* 界面样式*/
 void Show_Clock_UI(uint8_t clkflag)
@@ -43,6 +87,8 @@ void Show_Clock_UI(uint8_t clkflag)
 #endif
 	
 		OLED_Clear();
+	// 显示电池电量
+	Show_Battery();
 	// 显示年月日(屏幕左上角)
 	OLED_Printf(0, 0, OLED_6X8, "%d-%d-%d", MyRTC_Time[0], MyRTC_Time[1], MyRTC_Time[2]);
 	// 显示"菜单"(屏幕左下角)16X16
@@ -53,6 +99,7 @@ void Show_Clock_UI(uint8_t clkflag)
 	else {OLED_ReverseArea(96, 48, 32, 16);}
 	OLED_UpdateArea(0, 48, 128, 16);
 	OLED_UpdateArea(0, 0, 60, 8);
+	OLED_UpdateArea(64, 0, 64, 16);	// 电池区域
 }
 
 // 首页选项标志位

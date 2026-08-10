@@ -18,6 +18,8 @@
 #ifndef MahonyAHRS_h
 #define MahonyAHRS_h
 
+#include <stdint.h>
+
 //----------------------------------------------------------------------------------------------------
 // Variable declaration
 // 变量声明

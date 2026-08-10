@@ -8,6 +8,7 @@
 #ifndef __ROLL_CLOCK_H__
 #define __ROLL_CLOCK_H__
 
+#include <stdint.h>
 
 typedef struct {
 	

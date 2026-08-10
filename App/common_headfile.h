@@ -16,6 +16,7 @@
 #include "LED.h"
 #include "Key.h"
 #include "MPU6050.h"
+#include "AD.h"
 
 /* 算法库 */
 #include "MahonyAHRS.h"
