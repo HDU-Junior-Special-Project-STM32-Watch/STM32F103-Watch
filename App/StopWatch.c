@@ -4,8 +4,7 @@
 
 #include "stm32f10x.h"                  // Device header
 
-#include "OLED.h"
-#include "Key.h"
+#include "common_headfile.h"
 
 
 // 开始计时标志位；1开始，0停止

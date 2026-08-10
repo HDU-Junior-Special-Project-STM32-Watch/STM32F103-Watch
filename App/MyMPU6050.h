@@ -2,8 +2,11 @@
 #define __MYMPU6050_H
 
 
+// MPU6050解算使能标志位
+extern uint8_t MPU6050_ANALYSIS_ENABLE;
+
 void 	quat2euler		(float q0,float q1,float q2,float q3,
-						float* phi, float* theta, float* psi);
+						volatile float* phi, volatile float* theta, volatile float* psi);
 
 void	 MPU6050_Calculation(void);
 int 	MPU6050			(void);

@@ -4,16 +4,15 @@
 
 #include "stm32f10x.h"
 
-#include "OLED.h"
-#include "Key.h"
 #include "Delay.h"
-
-#include "MPU6050.h"
-#include "MahonyAHRS.h"
-#include "param_config.h"
+#include "common_headfile.h"
 #include <math.h>
 
 #define pi		(3.14159265f)
+
+
+// MPU6050解算使能标志位
+uint8_t MPU6050_ANALYSIS_ENABLE = 0;
 
 
 /*******************************************************************************************************************/

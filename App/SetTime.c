@@ -5,9 +5,7 @@
 #include "stm32f10x.h"                  // Device header
 
 #include "MyRTC.h"
-
-#include "OLED.h"
-#include "Key.h"
+#include "common_headfile.h"
 
 
 /*******************************************************************************************************************/

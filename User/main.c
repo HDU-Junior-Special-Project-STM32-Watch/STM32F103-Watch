@@ -3,10 +3,7 @@
 #include "Delay.h"
 #include "Timer.h"
 
-#include "menu.h"
-#include "OLED.h"
-#include "param_config.h"
-#include "StopWatch.h"
+#include "common_headfile.h"
 
 
 int main(void)
@@ -23,11 +20,18 @@ int main(void)
 	
 	// 首页选项标志位
 	uint8_t clkflag1 = 0;
-		
+	// (上电后)第一次读取按键
+	uint8_t begin_flag = 1;
+	
 	while (1)
 	{
 		// 等待返回[菜单]和[设置]中的选择(逻辑位于"menu.c")
 		clkflag1 = First_Page_Clock();
+		if (begin_flag == 1)
+		{
+			clkflag1 = 0;
+			begin_flag = 0;
+		}
 		// 跳转到[菜单]
 		if (clkflag1 == 1){Menu();}
 		// 跳转到[设置]

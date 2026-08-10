@@ -7,9 +7,8 @@
 
 #include "stm32f10x.h"                  // Device header
 #include "Delay.h"
-#include "OLED.h"
 #include "MyRTC.h"
-#include "Roll_Clock.h"
+#include "common_headfile.h"
 
 
 Clock Sec;

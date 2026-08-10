@@ -340,7 +340,7 @@
               <MiscControls>--no-multibyte-chars</MiscControls>
               <Define>USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>.\Start;.\Library;.\User;.\System;.\Hardware</IncludePath>
+              <IncludePath>.\Start;.\Library;.\User;.\System;.\Hardware;.\App</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -690,66 +690,6 @@
           <GroupName>Hardware</GroupName>
           <Files>
             <File>
-              <FileName>menu.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Hardware\menu.c</FilePath>
-            </File>
-            <File>
-              <FileName>menu.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Hardware\menu.h</FilePath>
-            </File>
-            <File>
-              <FileName>SetTime.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Hardware\SetTime.c</FilePath>
-            </File>
-            <File>
-              <FileName>SetTime.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Hardware\SetTime.h</FilePath>
-            </File>
-            <File>
-              <FileName>SetBrightness.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Hardware\SetBrightness.c</FilePath>
-            </File>
-            <File>
-              <FileName>SetBrightness.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Hardware\SetBrightness.h</FilePath>
-            </File>
-            <File>
-              <FileName>StopWatch.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Hardware\StopWatch.c</FilePath>
-            </File>
-            <File>
-              <FileName>StopWatch.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Hardware\StopWatch.h</FilePath>
-            </File>
-            <File>
-              <FileName>MyMPU6050.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Hardware\MyMPU6050.c</FilePath>
-            </File>
-            <File>
-              <FileName>MyMPU6050.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Hardware\MyMPU6050.h</FilePath>
-            </File>
-            <File>
-              <FileName>param_config.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Hardware\param_config.c</FilePath>
-            </File>
-            <File>
-              <FileName>param_config.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Hardware\param_config.h</FilePath>
-            </File>
-            <File>
               <FileName>OLED.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Hardware\OLED.c</FilePath>
@@ -814,26 +754,6 @@
               <FileType>5</FileType>
               <FilePath>.\Hardware\MyI2C.h</FilePath>
             </File>
-            <File>
-              <FileName>MahonyAHRS.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Hardware\MahonyAHRS.c</FilePath>
-            </File>
-            <File>
-              <FileName>MahonyAHRS.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Hardware\MahonyAHRS.h</FilePath>
-            </File>
-            <File>
-              <FileName>Roll_Clock.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Hardware\Roll_Clock.c</FilePath>
-            </File>
-            <File>
-              <FileName>Roll_Clock.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Hardware\Roll_Clock.h</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
@@ -858,6 +778,86 @@
               <FileName>stm32f10x_it.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\User\stm32f10x_it.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>App</GroupName>
+          <Files>
+            <File>
+              <FileName>common_headfile.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\App\common_headfile.h</FilePath>
+            </File>
+            <File>
+              <FileName>menu.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\App\menu.c</FilePath>
+            </File>
+            <File>
+              <FileName>menu.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\App\menu.h</FilePath>
+            </File>
+            <File>
+              <FileName>MyMPU6050.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\App\MyMPU6050.c</FilePath>
+            </File>
+            <File>
+              <FileName>MyMPU6050.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\App\MyMPU6050.h</FilePath>
+            </File>
+            <File>
+              <FileName>Roll_Clock.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\App\Roll_Clock.c</FilePath>
+            </File>
+            <File>
+              <FileName>Roll_Clock.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\App\Roll_Clock.h</FilePath>
+            </File>
+            <File>
+              <FileName>SetBrightness.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\App\SetBrightness.c</FilePath>
+            </File>
+            <File>
+              <FileName>SetBrightness.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\App\SetBrightness.h</FilePath>
+            </File>
+            <File>
+              <FileName>SetTime.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\App\SetTime.c</FilePath>
+            </File>
+            <File>
+              <FileName>SetTime.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\App\SetTime.h</FilePath>
+            </File>
+            <File>
+              <FileName>StopWatch.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\App\StopWatch.c</FilePath>
+            </File>
+            <File>
+              <FileName>StopWatch.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\App\StopWatch.h</FilePath>
+            </File>
+            <File>
+              <FileName>MahonyAHRS.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\App\MahonyAHRS.c</FilePath>
+            </File>
+            <File>
+              <FileName>MahonyAHRS.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\App\MahonyAHRS.h</FilePath>
             </File>
           </Files>
         </Group>

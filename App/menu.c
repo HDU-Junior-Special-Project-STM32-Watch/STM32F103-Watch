@@ -1,18 +1,6 @@
 #include "stm32f10x.h"                  // Device header
-
 #include "MyRTC.h"
-#include "MPU6050.h"
-
-#include "OLED.h"
-#include "LED.h"
-#include "Key.h"
-#include "SetTime.h"					// [设置]日期时间设置模块
-#include "SetBrightness.h"				// [设置]亮度设置模块
-#include "StopWatch.h"					// [菜单]秒表模块
-#include "MyMPU6050.h"					// [菜单]姿态解算模块
-#include "Roll_Clock.h"					// 滚动显示时间模块
-
-#include "Menu.h"
+#include "common_headfile.h"
 
 
 /*******************************************************************************************************************/
@@ -104,6 +92,10 @@ int First_Page_Clock(void)
 		}
 		else if (Key_Check(KEY_NAME_COMFIRM,KEY_LONG))// 确认键 长按
 		{
+			// 清屏OLED
+			OLED_Clear();
+			OLED_Update();
+			
 			GPIO_ResetBits(GPIOB, GPIO_Pin_13);// 拉低CTL引脚（PB13),单片机关机
 			GPIO_SetBits(GPIOB, GPIO_Pin_12);// 拉高BAT_ADC_EN引脚（PB12),ADC检测电路断开
 		}
