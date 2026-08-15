@@ -2,7 +2,6 @@
 
 #include "Delay.h"
 #include "Timer.h"
-
 #include "common_headfile.h"
 
 
@@ -40,6 +39,9 @@ int main(void)
 }
 
 uint16_t Time_Count = 0;
+// 时间参考值，将被开发给其他文件
+uint16_t Time_Count1 = 0;
+uint16_t Time_Count2 = 0;
 
 /* TIM2定时器1ms定时中断*/
 void TIM2_IRQHandler(void)
@@ -59,6 +61,10 @@ void TIM2_IRQHandler(void)
 		{
 			IMU_D_and_A_En = 1;
 		}
+		
+		// 自增,3000清零
+		Time_Count1 = (Time_Count1 >= 3000) ? 0 : Time_Count1 + 1;
+		Time_Count2 = (Time_Count2 >= 3000) ? 0 : Time_Count2 + 1;
 		
 		TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
 	}

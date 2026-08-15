@@ -879,6 +879,26 @@
               <FileType>5</FileType>
               <FilePath>.\App\StopWatch_page.h</FilePath>
             </File>
+            <File>
+              <FileName>Gradienter_page.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\App\Gradienter_page.c</FilePath>
+            </File>
+            <File>
+              <FileName>Gradienter_page.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\App\Gradienter_page.h</FilePath>
+            </File>
+            <File>
+              <FileName>Emoji_page.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\App\Emoji_page.c</FilePath>
+            </File>
+            <File>
+              <FileName>Emoji_page.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\App\Emoji_page.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

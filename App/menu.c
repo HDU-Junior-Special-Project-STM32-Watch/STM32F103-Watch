@@ -433,8 +433,8 @@ int Menu(void)
 		else if (menu_falg_temp == 3){MenuToFunction();LED_Flashlight();}
 		else if (menu_falg_temp == 4){MenuToFunction();MPU6050();}
 		else if (menu_falg_temp == 5){}
-		else if (menu_falg_temp == 6){}
-		else if (menu_falg_temp == 7){}
+		else if (menu_falg_temp == 6){MenuToFunction();Emoji();}
+		else if (menu_falg_temp == 7){MenuToFunction();Gradienter();}
 		
 		/* 显示更新 */
 		if (menu_falg == 1)

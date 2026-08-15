@@ -83,6 +83,10 @@ int StopWatch(void)
 	// 秒表界面选项标志位
 	uint8_t stopwatch_flag = 1;
 	
+	// 时间参考值重置
+	Time_Count1 = 0;
+	Time_Count2 = 0;
+	
 	while(1)
 	{
 		// 存储确认键被按下时stopwatch_flag的值的临时变量，默认为无效值0
@@ -113,35 +117,39 @@ int StopWatch(void)
 		else if (stopwatch_flag_temp == 3){start_timing_flag = 0;hour = min =sec = 0;}
 		
 		/* 显示更新 */
-		switch(stopwatch_flag)
+		if (Time_Count1 >= 100)	// 1ms * 100 的显示周期
 		{
-			// 光标在"返回"键处
-			case 1:
+			Time_Count1 = 0;
+			switch(stopwatch_flag)
 			{
-				Show_StopWatch_UI();
-				OLED_ReverseArea(  0,  0, 16, 16);
-				OLED_Update();
-				
-				break;
+				// 光标在"返回"键处
+				case 1:
+				{
+					Show_StopWatch_UI();
+					OLED_ReverseArea(  0,  0, 16, 16);
+					OLED_Update();
+					
+					break;
+				}
+				// 光标在"开始"/"停止"键处
+				case 2:
+				{
+					Show_StopWatch_UI();			
+					OLED_ReverseArea( 18, 44, 32, 16);
+					OLED_Update();
+					
+					break;
+				}
+				// 光标在"清除"键处
+				case 3:
+				{
+					Show_StopWatch_UI();		
+					OLED_ReverseArea( 78, 44, 32, 16);
+					OLED_Update();
+					
+					break;
+				}	
 			}
-			// 光标在"开始"/"停止"键处
-			case 2:
-			{
-				Show_StopWatch_UI();			
-				OLED_ReverseArea( 18, 44, 32, 16);
-				OLED_Update();
-				
-				break;
-			}
-			// 光标在"清除"键处
-			case 3:
-			{
-				Show_StopWatch_UI();		
-				OLED_ReverseArea( 78, 44, 32, 16);
-				OLED_Update();
-				
-				break;
-			}	
 		}
 	}
 }

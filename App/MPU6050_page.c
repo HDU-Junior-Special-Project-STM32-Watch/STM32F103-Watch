@@ -56,6 +56,10 @@ int MPU6050(void)
 	OLED_ReverseArea(  0,  0, 16, 16);	
 	OLED_Update();
 	
+	// 时间参考值重置
+	Time_Count1 = 0;
+	Time_Count2 = 0;
+	
 	uint8_t refresh = 1;	// 首帧刷新
 	uint8_t page = 0;		// 页面
 	
@@ -119,73 +123,77 @@ int MPU6050(void)
 		if (IMU_D_and_A_En == 1){IMU_Update_Analysis();}
 		
 		/* 显示更新 */
-		if (page == 0)
+		if (Time_Count1 >= 100)	// 1ms * 100 的显示周期
 		{
-			if (refresh)
+			Time_Count1 = 0;
+			if (page == 0)
 			{
-				OLED_Clear();
-				Show_MPU6050_FirstUI();
-				switch(mpu6050_flag)
+				if (refresh)
 				{
-					// 光标在"回车"键
-					case 1:
-						OLED_ReverseArea(  0,  0, 16, 16);						
-						break;
-					
-					// 光标在"校准"键
-					case 2:
-						OLED_ReverseArea( 47,  0, 48, 16);									
-						break;
-					// 光标在"R/C"键（解算值/原始值 显示切换）
-					case 3:
-						OLED_ReverseArea(111,  0, 16, 16);					
-						break;
+					OLED_Clear();
+					Show_MPU6050_FirstUI();
+					switch(mpu6050_flag)
+					{
+						// 光标在"回车"键
+						case 1:
+							OLED_ReverseArea(  0,  0, 16, 16);						
+							break;
+						
+						// 光标在"校准"键
+						case 2:
+							OLED_ReverseArea( 47,  0, 48, 16);									
+							break;
+						// 光标在"R/C"键（解算值/原始值 显示切换）
+						case 3:
+							OLED_ReverseArea(111,  0, 16, 16);					
+							break;
+					}
+					OLED_Update();
+					refresh = 0;
 				}
+				OLED_Printf( 48, 16, OLED_8X16, "%.1f ", Roll_Result);
+				OLED_Printf( 48, 32, OLED_8X16, "%.1f ", Pitch_Result);
+				OLED_Printf( 48, 48, OLED_8X16, "%.1f ", Yaw_Result);
 				OLED_Update();
-				refresh = 0;
 			}
-			OLED_Printf( 48, 16, OLED_8X16, "%.1f ", Roll_Result);
-			OLED_Printf( 48, 32, OLED_8X16, "%.1f ", Pitch_Result);
-			OLED_Printf( 48, 48, OLED_8X16, "%.1f ", Yaw_Result);
-			OLED_Update();
-		}
-		else if (page == 1)
-		{
-			if (refresh)
+			else if (page == 1)
 			{
-				OLED_Clear();
-				Show_MPU6050_SecondUI();
-				switch(mpu6050_flag)
+				if (refresh)
 				{
-					// 光标在"回车"键
-					case 1:
-						OLED_ReverseArea(  0,  0, 16, 16);						
-						break;
-					
-					// 光标在"校准"键
-					case 2:
-						OLED_ReverseArea( 47,  0, 48, 16);									
-						break;
-					// 光标在"R/C"键（解算值/原始值）
-					case 3:
-						OLED_ReverseArea(111,  0, 16, 16);					
-						break;
+					OLED_Clear();
+					Show_MPU6050_SecondUI();
+					switch(mpu6050_flag)
+					{
+						// 光标在"回车"键
+						case 1:
+							OLED_ReverseArea(  0,  0, 16, 16);						
+							break;
+						
+						// 光标在"校准"键
+						case 2:
+							OLED_ReverseArea( 47,  0, 48, 16);									
+							break;
+						// 光标在"R/C"键（解算值/原始值）
+						case 3:
+							OLED_ReverseArea(111,  0, 16, 16);					
+							break;
+					}
+					OLED_Printf( 64, 40, OLED_6X8, "(%d)  ", gyro_cal.offset_x);
+					OLED_Printf( 64, 48, OLED_6X8, "(%d)  ", gyro_cal.offset_y);
+					OLED_Printf( 64, 56, OLED_6X8, "(%d)  ", gyro_cal.offset_z);
+					OLED_Update();
+					refresh = 0;
 				}
-				OLED_Printf( 64, 40, OLED_6X8, "(%d)  ", gyro_cal.offset_x);
-				OLED_Printf( 64, 48, OLED_6X8, "(%d)  ", gyro_cal.offset_y);
-				OLED_Printf( 64, 56, OLED_6X8, "(%d)  ", gyro_cal.offset_z);
+				int16_t gx, gy, gz;
+				IMU_Gyro_Apply(&gyro_cal, &gx, &gy, &gz);
+				OLED_Printf( 18, 16, OLED_6X8, "%d  ", mpu6050_ax);
+				OLED_Printf( 18, 24, OLED_6X8, "%d  ", mpu6050_ay);
+				OLED_Printf( 18, 32, OLED_6X8, "%d  ", mpu6050_az);
+				OLED_Printf( 18, 40, OLED_6X8, "%d  ", gx);
+				OLED_Printf( 18, 48, OLED_6X8, "%d  ", gy);
+				OLED_Printf( 18, 56, OLED_6X8, "%d  ", gz);
 				OLED_Update();
-				refresh = 0;
 			}
-			int16_t gx, gy, gz;
-			IMU_Gyro_Apply(&gyro_cal, &gx, &gy, &gz);
-			OLED_Printf( 18, 16, OLED_6X8, "%d  ", mpu6050_ax);
-			OLED_Printf( 18, 24, OLED_6X8, "%d  ", mpu6050_ay);
-			OLED_Printf( 18, 32, OLED_6X8, "%d  ", mpu6050_az);
-			OLED_Printf( 18, 40, OLED_6X8, "%d  ", gx);
-			OLED_Printf( 18, 48, OLED_6X8, "%d  ", gy);
-			OLED_Printf( 18, 56, OLED_6X8, "%d  ", gz);
-			OLED_Update();
 		}
 	}
 }

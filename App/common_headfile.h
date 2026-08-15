@@ -16,6 +16,8 @@
 #include "StopWatch_page.h"
 #include "MPU6050_page.h"
 #include "LEDFlashlight_page.h"
+#include "Gradienter_page.h"
+#include "Emoji_page.h"
 
 /* 驱动层 */
 #include "OLED.h"
@@ -26,5 +28,10 @@
 
 /* 算法库 */
 #include "mpu6050_Analysis.h"
+
+/* 时间参考值 */
+// 1ms
+extern uint16_t Time_Count1;
+extern uint16_t Time_Count2;
 
 #endif
