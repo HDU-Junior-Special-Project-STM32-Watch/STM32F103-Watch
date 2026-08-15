@@ -1,13 +1,14 @@
 /*******************************************************************************
-[设置]亮度设置界面
+[菜单]秒表界面
 *******************************************************************************/
 
 
-#ifndef __SETBRIGHTNESS_H
-#define __SETBRIGHTNESS_H
+#ifndef __STOPWATCH_PAGE_H
+#define __STOPWATCH_PAGE_H
 
 #include <stdint.h>
 
-uint8_t		SetBrightness		(void);
+void 	StopWatch_Tick	(void);
+int 	StopWatch		(void);
 
 #endif

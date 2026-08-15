@@ -810,16 +810,6 @@
               <FilePath>.\App\menu.h</FilePath>
             </File>
             <File>
-              <FileName>MyMPU6050.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\App\MyMPU6050.c</FilePath>
-            </File>
-            <File>
-              <FileName>MyMPU6050.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\App\MyMPU6050.h</FilePath>
-            </File>
-            <File>
               <FileName>Roll_Clock.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\App\Roll_Clock.c</FilePath>
@@ -830,54 +820,64 @@
               <FilePath>.\App\Roll_Clock.h</FilePath>
             </File>
             <File>
-              <FileName>SetBrightness.c</FileName>
+              <FileName>mpu6050_Analysis.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\App\SetBrightness.c</FilePath>
+              <FilePath>.\App\mpu6050_Analysis.c</FilePath>
             </File>
             <File>
-              <FileName>SetBrightness.h</FileName>
+              <FileName>mpu6050_Analysis.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\App\SetBrightness.h</FilePath>
+              <FilePath>.\App\mpu6050_Analysis.h</FilePath>
             </File>
             <File>
-              <FileName>SetTime.c</FileName>
+              <FileName>LEDFlashlight_page.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\App\SetTime.c</FilePath>
+              <FilePath>.\App\LEDFlashlight_page.c</FilePath>
             </File>
             <File>
-              <FileName>SetTime.h</FileName>
+              <FileName>LEDFlashlight_page.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\App\SetTime.h</FilePath>
+              <FilePath>.\App\LEDFlashlight_page.h</FilePath>
             </File>
             <File>
-              <FileName>StopWatch.c</FileName>
+              <FileName>MPU6050_page.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\App\StopWatch.c</FilePath>
+              <FilePath>.\App\MPU6050_page.c</FilePath>
             </File>
             <File>
-              <FileName>StopWatch.h</FileName>
+              <FileName>MPU6050_page.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\App\StopWatch.h</FilePath>
+              <FilePath>.\App\MPU6050_page.h</FilePath>
             </File>
             <File>
-              <FileName>MahonyAHRS.c</FileName>
+              <FileName>SetBrightness_page.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\App\MahonyAHRS.c</FilePath>
+              <FilePath>.\App\SetBrightness_page.c</FilePath>
             </File>
             <File>
-              <FileName>MahonyAHRS.h</FileName>
+              <FileName>SetBrightness_page.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\App\MahonyAHRS.h</FilePath>
+              <FilePath>.\App\SetBrightness_page.h</FilePath>
             </File>
             <File>
-              <FileName>LEDFlashlight.c</FileName>
+              <FileName>SetTime_page.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\App\LEDFlashlight.c</FilePath>
+              <FilePath>.\App\SetTime_page.c</FilePath>
             </File>
             <File>
-              <FileName>LEDFlashlight.h</FileName>
+              <FileName>SetTime_page.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\App\LEDFlashlight.h</FilePath>
+              <FilePath>.\App\SetTime_page.h</FilePath>
+            </File>
+            <File>
+              <FileName>StopWatch_page.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\App\StopWatch_page.c</FilePath>
+            </File>
+            <File>
+              <FileName>StopWatch_page.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\App\StopWatch_page.h</FilePath>
             </File>
           </Files>
         </Group>

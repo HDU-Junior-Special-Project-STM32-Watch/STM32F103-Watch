@@ -15,14 +15,14 @@ uint8_t Brightness_Level = 4;
 
 void Show_SetBrightness_UI(void)
 {
-	OLED_ShowImage(0, 0, 16, 16, Return);
-	OLED_Printf(0, 16, OLED_8X16, "亮度:");
-	OLED_ShowImage(48, 16, 16, 16, Brightness_Image);
-	OLED_ShowImage(64, 16, 16, 16, Brightness_Image);
-	OLED_ShowImage(80, 16, 16, 16, Brightness_Image);
-	OLED_ShowImage(96, 16, 16, 16, Brightness_Image);
+	OLED_ShowImage(  0,  0, 16, 16, Return);
+	OLED_Printf(  0, 16, OLED_8X16, "亮度:");
+	OLED_ShowImage( 48, 16, 16, 16, Brightness_Image);
+	OLED_ShowImage( 64, 16, 16, 16, Brightness_Image);
+	OLED_ShowImage( 80, 16, 16, 16, Brightness_Image);
+	OLED_ShowImage( 96, 16, 16, 16, Brightness_Image);
 	OLED_ShowImage(112, 16, 16, 16, Brightness_Image);
-	OLED_ReverseArea(48, 16, 16 * Brightness_Level, 16);
+	OLED_ReverseArea( 48, 16, 16 * Brightness_Level, 16);
 }
 /**********************************************************/
 /*----------------------------------------[E] 界面样式 [E]*/
@@ -92,11 +92,11 @@ int Set_OLED_Brightness(void)
 /*[S] 界面逻辑 [S]----------------------------------------*/
 /**********************************************************/
 
-// 日期时间设置界面选项标志位
-uint8_t set_brightness_flag = 1;
-
 uint8_t SetBrightness(void)
 {
+	// 日期时间设置界面选项标志位
+	uint8_t set_brightness_flag = 1;
+	
 	uint8_t refresh = 1;	// 显示刷新
 
 	while(1)
@@ -138,7 +138,7 @@ uint8_t SetBrightness(void)
 				{
 					OLED_Clear();
 					Show_SetBrightness_UI();
-					OLED_ReverseArea(0, 0, 16, 16);
+					OLED_ReverseArea(  0,  0, 16, 16);
 					OLED_Update();
 					
 					break;
@@ -148,7 +148,7 @@ uint8_t SetBrightness(void)
 				{
 					OLED_Clear();
 					Show_SetBrightness_UI();
-					OLED_ReverseArea(0, 16, 32, 16);
+					OLED_ReverseArea(  0, 16, 32, 16);
 					OLED_Update();
 					
 					break;

@@ -1231,30 +1231,6 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\App\MyMPU6050.c</PathWithFileName>
-      <FilenameWithoutPath>MyMPU6050.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>6</GroupNumber>
-      <FileNumber>82</FileNumber>
-      <FileType>5</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\App\MyMPU6050.h</PathWithFileName>
-      <FilenameWithoutPath>MyMPU6050.h</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>6</GroupNumber>
-      <FileNumber>83</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
       <PathWithFileName>.\App\Roll_Clock.c</PathWithFileName>
       <FilenameWithoutPath>Roll_Clock.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
@@ -1262,7 +1238,7 @@
     </File>
     <File>
       <GroupNumber>6</GroupNumber>
-      <FileNumber>84</FileNumber>
+      <FileNumber>82</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1274,13 +1250,37 @@
     </File>
     <File>
       <GroupNumber>6</GroupNumber>
+      <FileNumber>83</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\App\mpu6050_Analysis.c</PathWithFileName>
+      <FilenameWithoutPath>mpu6050_Analysis.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>6</GroupNumber>
+      <FileNumber>84</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\App\mpu6050_Analysis.h</PathWithFileName>
+      <FilenameWithoutPath>mpu6050_Analysis.h</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>6</GroupNumber>
       <FileNumber>85</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\App\SetBrightness.c</PathWithFileName>
-      <FilenameWithoutPath>SetBrightness.c</FilenameWithoutPath>
+      <PathWithFileName>.\App\LEDFlashlight_page.c</PathWithFileName>
+      <FilenameWithoutPath>LEDFlashlight_page.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1291,8 +1291,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\App\SetBrightness.h</PathWithFileName>
-      <FilenameWithoutPath>SetBrightness.h</FilenameWithoutPath>
+      <PathWithFileName>.\App\LEDFlashlight_page.h</PathWithFileName>
+      <FilenameWithoutPath>LEDFlashlight_page.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1303,8 +1303,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\App\SetTime.c</PathWithFileName>
-      <FilenameWithoutPath>SetTime.c</FilenameWithoutPath>
+      <PathWithFileName>.\App\MPU6050_page.c</PathWithFileName>
+      <FilenameWithoutPath>MPU6050_page.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1315,8 +1315,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\App\SetTime.h</PathWithFileName>
-      <FilenameWithoutPath>SetTime.h</FilenameWithoutPath>
+      <PathWithFileName>.\App\MPU6050_page.h</PathWithFileName>
+      <FilenameWithoutPath>MPU6050_page.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1327,8 +1327,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\App\StopWatch.c</PathWithFileName>
-      <FilenameWithoutPath>StopWatch.c</FilenameWithoutPath>
+      <PathWithFileName>.\App\SetBrightness_page.c</PathWithFileName>
+      <FilenameWithoutPath>SetBrightness_page.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1339,8 +1339,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\App\StopWatch.h</PathWithFileName>
-      <FilenameWithoutPath>StopWatch.h</FilenameWithoutPath>
+      <PathWithFileName>.\App\SetBrightness_page.h</PathWithFileName>
+      <FilenameWithoutPath>SetBrightness_page.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1351,8 +1351,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\App\MahonyAHRS.c</PathWithFileName>
-      <FilenameWithoutPath>MahonyAHRS.c</FilenameWithoutPath>
+      <PathWithFileName>.\App\SetTime_page.c</PathWithFileName>
+      <FilenameWithoutPath>SetTime_page.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1363,8 +1363,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\App\MahonyAHRS.h</PathWithFileName>
-      <FilenameWithoutPath>MahonyAHRS.h</FilenameWithoutPath>
+      <PathWithFileName>.\App\SetTime_page.h</PathWithFileName>
+      <FilenameWithoutPath>SetTime_page.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1375,8 +1375,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\App\LEDFlashlight.c</PathWithFileName>
-      <FilenameWithoutPath>LEDFlashlight.c</FilenameWithoutPath>
+      <PathWithFileName>.\App\StopWatch_page.c</PathWithFileName>
+      <FilenameWithoutPath>StopWatch_page.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1387,8 +1387,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\App\LEDFlashlight.h</PathWithFileName>
-      <FilenameWithoutPath>LEDFlashlight.h</FilenameWithoutPath>
+      <PathWithFileName>.\App\StopWatch_page.h</PathWithFileName>
+      <FilenameWithoutPath>StopWatch_page.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

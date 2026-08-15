@@ -20,7 +20,7 @@ void Roll_Clock_Init(void)
 	Sec.Last=MyRTC_Time[5];
 	Min.Last=MyRTC_Time[4];
 	Hour.Last=MyRTC_Time[3];
-	OLED_Printf(16, 16, OLED_12X24 , "%02d:%02d:%02d", MyRTC_Time[3], MyRTC_Time[4], MyRTC_Time[5]);
+	OLED_Printf( 16, 16, OLED_12X24 , "%02d:%02d:%02d", MyRTC_Time[3], MyRTC_Time[4], MyRTC_Time[5]);
 }
 
 void OLED_Roll(void)
@@ -36,28 +36,28 @@ void OLED_Roll(void)
 	
 	for (uint8_t i=0;i<=24;i++)
 	{
-		OLED_ShowChar(40,16,':',OLED_12X24);
-		OLED_ShowChar(76,16,':',OLED_12X24);
+		OLED_ShowChar( 40, 16, ':', OLED_12X24);
+		OLED_ShowChar( 76, 16, ':', OLED_12X24);
 		
-		OLED_ShowNum(100,Sec.Ge_Y,Sec.Ge_Last,1,OLED_12X24);
-		OLED_ShowNum(100,Sec.Ge_Y+24,Sec.Ge_New,1,OLED_12X24);
+		OLED_ShowNum(100,Sec.Ge_Y,Sec.Ge_Last, 1, OLED_12X24);
+		OLED_ShowNum(100,Sec.Ge_Y+24,Sec.Ge_New, 1, OLED_12X24);
 		
-		OLED_ShowNum(88,Sec.Shi_Y,Sec.Shi_Last,1,OLED_12X24);
-		OLED_ShowNum(88,Sec.Shi_Y+24,Sec.Shi_New,1,OLED_12X24);
-		
-		
-		OLED_ShowNum(64,Min.Ge_Y,Min.Ge_Last,1,OLED_12X24);
-		OLED_ShowNum(64,Min.Ge_Y+24,Min.Ge_New,1,OLED_12X24);
-		
-		OLED_ShowNum(52,Min.Shi_Y,Min.Shi_Last,1,OLED_12X24);
-		OLED_ShowNum(52,Min.Shi_Y+24,Min.Shi_New,1,OLED_12X24);
+		OLED_ShowNum( 88,Sec.Shi_Y,Sec.Shi_Last, 1, OLED_12X24);
+		OLED_ShowNum( 88,Sec.Shi_Y+24,Sec.Shi_New, 1, OLED_12X24);
 		
 		
-		OLED_ShowNum(28,Hour.Ge_Y,Hour.Ge_Last,1,OLED_12X24);
-		OLED_ShowNum(28,Hour.Ge_Y+24,Hour.Ge_New,1,OLED_12X24);
+		OLED_ShowNum( 64, Min.Ge_Y, Min.Ge_Last, 1, OLED_12X24);
+		OLED_ShowNum( 64, Min.Ge_Y+24, Min.Ge_New, 1, OLED_12X24);
 		
-		OLED_ShowNum(16,Hour.Shi_Y,Hour.Shi_Last,1,OLED_12X24);
-		OLED_ShowNum(16,Hour.Shi_Y+24,Hour.Shi_New,1,OLED_12X24);
+		OLED_ShowNum( 52, Min.Shi_Y, Min.Shi_Last, 1, OLED_12X24);
+		OLED_ShowNum( 52, Min.Shi_Y+24, Min.Shi_New, 1, OLED_12X24);
+		
+		
+		OLED_ShowNum( 28, Hour.Ge_Y, Hour.Ge_Last, 1, OLED_12X24);
+		OLED_ShowNum( 28, Hour.Ge_Y+24, Hour.Ge_New, 1, OLED_12X24);
+		
+		OLED_ShowNum( 16, Hour.Shi_Y, Hour.Shi_Last, 1, OLED_12X24);
+		OLED_ShowNum( 16, Hour.Shi_Y+24, Hour.Shi_New, 1, OLED_12X24);
 		
 		OLED_UpdateArea(16, 16, 96, 24);
 		

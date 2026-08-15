@@ -15,18 +15,18 @@
 // 日期时间设置第一页UI
 void Show_SetTime_FirstUI(void)
 {
-	OLED_ShowImage(0, 0, 16, 16, Return);
-	OLED_Printf(0, 16, OLED_8X16, "年:%4d", MyRTC_Time[0]);
-	OLED_Printf(0, 32, OLED_8X16, "月:%2d", MyRTC_Time[1]);
-	OLED_Printf(0, 48, OLED_8X16, "日:%2d", MyRTC_Time[2]);
+	OLED_ShowImage(  0,  0, 16, 16, Return);
+	OLED_Printf(  0, 16, OLED_8X16, "年:%4d", MyRTC_Time[0]);
+	OLED_Printf(  0, 32, OLED_8X16, "月:%2d", MyRTC_Time[1]);
+	OLED_Printf(  0, 48, OLED_8X16, "日:%2d", MyRTC_Time[2]);
 }
 
 // 日期时间设置第二页UI
 void Show_SetTime_SecondUI(void)
 {
-	OLED_Printf(0, 0, OLED_8X16, "时:%02d", MyRTC_Time[3]);
-	OLED_Printf(0, 16, OLED_8X16, "分:%02d", MyRTC_Time[4]);
-	OLED_Printf(0, 32, OLED_8X16, "秒:%02d", MyRTC_Time[5]);
+	OLED_Printf(  0,  0, OLED_8X16, "时:%02d", MyRTC_Time[3]);
+	OLED_Printf(  0, 16, OLED_8X16, "分:%02d", MyRTC_Time[4]);
+	OLED_Printf(  0, 32, OLED_8X16, "秒:%02d", MyRTC_Time[5]);
 }
 /**********************************************************/
 /*----------------------------------------[E] 界面样式 [E]*/
@@ -66,7 +66,7 @@ int SetYear(void)// 年
 		}
 		
 		Show_SetTime_FirstUI();
-		OLED_ReverseArea(24, 16, 32, 16);
+		OLED_ReverseArea( 24, 16, 32, 16);
 		OLED_Update();
 	}
 }
@@ -94,7 +94,7 @@ int SetMonth(void)// 月
 		}
 		
 		Show_SetTime_FirstUI();
-		OLED_ReverseArea(24, 32, 16, 16);
+		OLED_ReverseArea( 24, 32, 16, 16);
 		OLED_Update();
 	}
 }
@@ -123,7 +123,7 @@ int SetDay(void)// 日
 		}
 		
 		Show_SetTime_FirstUI();
-		OLED_ReverseArea(24, 48, 16, 16);
+		OLED_ReverseArea( 24, 48, 16, 16);
 		OLED_Update();
 	}
 }
@@ -152,7 +152,7 @@ int SetHour(void)// 时
 		}
 		
 		Show_SetTime_SecondUI();
-		OLED_ReverseArea(24, 0, 16, 16);
+		OLED_ReverseArea( 24, 0, 16, 16);
 		OLED_Update();
 	}
 }
@@ -181,7 +181,7 @@ int SetMin(void)// 分
 		}
 		
 		Show_SetTime_SecondUI();
-		OLED_ReverseArea(24, 16, 16, 16);
+		OLED_ReverseArea( 24, 16, 16, 16);
 		OLED_Update();
 	}
 }
@@ -210,7 +210,7 @@ int SetSec(void)// 秒
 		}
 		
 		Show_SetTime_SecondUI();
-		OLED_ReverseArea(24, 32, 16, 16);
+		OLED_ReverseArea( 24, 32, 16, 16);
 		OLED_Update();
 	}
 }
@@ -223,11 +223,11 @@ int SetSec(void)// 秒
 /*[S] 界面逻辑 [S]----------------------------------------*/
 /**********************************************************/
 
-// 日期时间设置界面选项标志位
-uint8_t set_time_flag = 1;
-
 uint8_t SetTime(void)
 {
+	// 日期时间设置界面选项标志位
+	uint8_t set_time_flag = 1;
+	
 	uint8_t refresh = 1;	// 显示刷新
 
 	while(1)
@@ -279,7 +279,7 @@ uint8_t SetTime(void)
 				{
 					OLED_Clear();
 					Show_SetTime_FirstUI();
-					OLED_ReverseArea(0, 0, 16, 16);
+					OLED_ReverseArea(  0, 0, 16, 16);
 					OLED_Update();
 					
 					break;
@@ -289,7 +289,7 @@ uint8_t SetTime(void)
 				{
 					OLED_Clear();
 					Show_SetTime_FirstUI();
-					OLED_ReverseArea(0, 16, 16, 16);
+					OLED_ReverseArea(  0, 16, 16, 16);
 					OLED_Update();
 					
 					break;
@@ -299,7 +299,7 @@ uint8_t SetTime(void)
 				{
 					OLED_Clear();
 					Show_SetTime_FirstUI();
-					OLED_ReverseArea(0, 32, 16, 16);
+					OLED_ReverseArea(  0, 32, 16, 16);
 					OLED_Update();
 					
 					break;
@@ -309,7 +309,7 @@ uint8_t SetTime(void)
 				{
 					OLED_Clear();
 					Show_SetTime_FirstUI();
-					OLED_ReverseArea(0, 48, 16, 16);
+					OLED_ReverseArea(  0, 48, 16, 16);
 					OLED_Update();
 					
 					break;
@@ -319,7 +319,7 @@ uint8_t SetTime(void)
 				{
 					OLED_Clear();
 					Show_SetTime_SecondUI();
-					OLED_ReverseArea(0, 0, 16, 16);
+					OLED_ReverseArea(  0,  0, 16, 16);
 					OLED_Update();
 					
 					break;
@@ -329,7 +329,7 @@ uint8_t SetTime(void)
 				{
 					OLED_Clear();
 					Show_SetTime_SecondUI();
-					OLED_ReverseArea(0, 16, 16, 16);
+					OLED_ReverseArea(  0, 16, 16, 16);
 					OLED_Update();
 					
 					break;
@@ -339,7 +339,7 @@ uint8_t SetTime(void)
 				{
 					OLED_Clear();
 					Show_SetTime_SecondUI();
-					OLED_ReverseArea(0, 32, 16, 16);
+					OLED_ReverseArea(  0, 32, 16, 16);
 					OLED_Update();
 					
 					break;

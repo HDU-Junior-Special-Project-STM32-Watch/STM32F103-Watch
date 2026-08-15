@@ -3,8 +3,8 @@
 *******************************************************************************/
 
 
-#ifndef __MYMPU6050_H
-#define __MYMPU6050_H
+#ifndef __MYMPU6050_PAGE_H
+#define __MYMPU6050_PAGE_H
 
 #include <stdint.h>
 

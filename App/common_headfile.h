@@ -10,12 +10,12 @@
 
 /* 应用层 */
 #include "menu.h"
-#include "SetTime.h"
-#include "SetBrightness.h"
-#include "StopWatch.h"
-#include "MyMPU6050.h"
 #include "Roll_Clock.h"
-#include "LEDFlashlight.h"
+#include "SetTime_page.h"
+#include "SetBrightness_page.h"
+#include "StopWatch_page.h"
+#include "MPU6050_page.h"
+#include "LEDFlashlight_page.h"
 
 /* 驱动层 */
 #include "OLED.h"
@@ -25,6 +25,6 @@
 #include "AD.h"
 
 /* 算法库 */
-#include "MahonyAHRS.h"
+#include "mpu6050_Analysis.h"
 
 #endif

@@ -1,14 +1,13 @@
 /*******************************************************************************
-[菜单]秒表界面
+[菜单]LED手电筒界面
 *******************************************************************************/
 
 
-#ifndef __STOPWATCH_H
-#define __STOPWATCH_H
+#ifndef __LEDFLASHLIGHT_PAGE_H__
+#define __LEDFLASHLIGHT_PAGE_H__
 
 #include <stdint.h>
 
-void 	StopWatch_Tick	(void);
-int 	StopWatch		(void);
+int LED_Flashlight(void);
 
 #endif

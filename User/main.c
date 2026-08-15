@@ -57,7 +57,7 @@ void TIM2_IRQHandler(void)
 		// 姿态解算与按键扫描错峰5ms：按键在TC≈9, 姿态在TC==5
 		if (Time_Count == 5)
 		{
-			MPU6050_ANALYSIS_ENABLE = 1;			
+			IMU_D_and_A_En = 1;
 		}
 		
 		TIM_ClearITPendingBit(TIM2, TIM_IT_Update);

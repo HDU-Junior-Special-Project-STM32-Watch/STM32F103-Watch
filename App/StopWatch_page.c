@@ -19,17 +19,17 @@ uint8_t hour, min, sec;
 
 void Show_StopWatch_UI(void)
 {
-	OLED_ShowImage(0, 0, 16, 16, Return);
+	OLED_ShowImage(  0,  0, 16, 16, Return);
 	OLED_Printf(32, 20, OLED_8X16, "%02d:%02d:%02d", hour, min, sec);
 	if (start_timing_flag == 0)
 	{
-		OLED_ShowString(18, 44, "开始", OLED_8X16);
+		OLED_ShowString( 18, 44, "开始", OLED_8X16);
 	}
 	if (start_timing_flag == 1)
 	{
-		OLED_ShowString(18, 44, "停止", OLED_8X16);
+		OLED_ShowString( 18, 44, "停止", OLED_8X16);
 	}
-	OLED_ShowString(78, 44, "清除", OLED_8X16);
+	OLED_ShowString( 78, 44, "清除", OLED_8X16);
 }
 /**********************************************************/
 /*----------------------------------------[E] 界面样式 [E]*/
@@ -78,11 +78,11 @@ void StopWatch_Tick(void)
 /*[S] 界面逻辑 [S]----------------------------------------*/
 /**********************************************************/
 
-// 秒表界面选项标志位
-uint8_t stopwatch_flag = 1;
-
 int StopWatch(void)
 {
+	// 秒表界面选项标志位
+	uint8_t stopwatch_flag = 1;
+	
 	while(1)
 	{
 		// 存储确认键被按下时stopwatch_flag的值的临时变量，默认为无效值0
@@ -119,7 +119,7 @@ int StopWatch(void)
 			case 1:
 			{
 				Show_StopWatch_UI();
-				OLED_ReverseArea(0, 0, 16, 16);
+				OLED_ReverseArea(  0,  0, 16, 16);
 				OLED_Update();
 				
 				break;
@@ -128,7 +128,7 @@ int StopWatch(void)
 			case 2:
 			{
 				Show_StopWatch_UI();			
-				OLED_ReverseArea(18, 44, 32, 16);
+				OLED_ReverseArea( 18, 44, 32, 16);
 				OLED_Update();
 				
 				break;
@@ -137,7 +137,7 @@ int StopWatch(void)
 			case 3:
 			{
 				Show_StopWatch_UI();		
-				OLED_ReverseArea(78, 44, 32, 16);
+				OLED_ReverseArea( 78, 44, 32, 16);
 				OLED_Update();
 				
 				break;

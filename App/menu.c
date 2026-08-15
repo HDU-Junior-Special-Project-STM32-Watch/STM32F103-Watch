@@ -99,24 +99,24 @@ void Show_Clock_UI(uint8_t clkflag)
 #if ROLL_CLOCK_ENABLE 
 	Roll_Clock();
 #else
-	OLED_Printf(16, 16, OLED_12X24 , "%02d:%02d:%02d", MyRTC_Time[3], MyRTC_Time[4], MyRTC_Time[5]);
-	OLED_UpdateArea(16, 16, 96, 24);
+	OLED_Printf( 16, 16, OLED_12X24 , "%02d:%02d:%02d", MyRTC_Time[3], MyRTC_Time[4], MyRTC_Time[5]);
+	OLED_UpdateArea( 16, 16, 96, 24);
 #endif
 	
 		OLED_Clear();
 	// 显示电池电量
 	Show_Battery();
 	// 显示年月日(屏幕左上角)
-	OLED_Printf(0, 1, OLED_6X8, "%d-%d-%d", MyRTC_Time[0], MyRTC_Time[1], MyRTC_Time[2]);
+	OLED_Printf(  0,  1, OLED_6X8, "%d-%d-%d", MyRTC_Time[0], MyRTC_Time[1], MyRTC_Time[2]);
 	// 显示"菜单"(屏幕左下角)16X16
-	OLED_ShowString(0, 48, "菜单", OLED_8X16);
+	OLED_ShowString(  0, 48, "菜单", OLED_8X16);
 	// 显示"设置"(屏幕右下角)16X16
-	OLED_ShowString(96, 48, "设置", OLED_8X16);
-	if (clkflag == 1){OLED_ReverseArea(0, 48, 32, 16);}
-	else {OLED_ReverseArea(96, 48, 32, 16);}
-	OLED_UpdateArea(0, 48, 128, 16);
-	OLED_UpdateArea(0, 0, 60, 8);		// 日期区域, y=1
-	OLED_UpdateArea(85, 0, 41, 16);		// 电池区域, x:85~125 y:0~15
+	OLED_ShowString( 96, 48, "设置", OLED_8X16);
+	if (clkflag == 1){OLED_ReverseArea(  0, 48, 32, 16);}
+	else {OLED_ReverseArea( 96, 48, 32, 16);}
+	OLED_UpdateArea(  0, 48, 128, 16);
+	OLED_UpdateArea(  0,  0, 60,  8);		// 日期区域, y=1
+	OLED_UpdateArea( 85,  0, 41, 16);		// 电池区域, x:85~125 y:0~15
 }
 
 // 首页选项标志位
@@ -129,7 +129,7 @@ int First_Page_Clock(void)
 {
 #if ROLL_CLOCK_ENABLE
 	Roll_Clock_Init();
-	OLED_UpdateArea(16, 16, 96, 24);
+	OLED_UpdateArea( 16, 16, 96, 24);
 #endif	
 	
 
@@ -185,9 +185,9 @@ int First_Page_Clock(void)
 /* 界面样式*/
 void Show_SettingPage_UI(void)
 {
-	OLED_ShowImage(0, 0, 16, 16, Return);
-	OLED_ShowString(0, 16, "日期时间设置", OLED_8X16);
-	OLED_ShowString(0, 32, "亮度设置", OLED_8X16);
+	OLED_ShowImage(  0,  0, 16, 16, Return);
+	OLED_ShowString(  0, 16, "日期时间设置", OLED_8X16);
+	OLED_ShowString(  0, 32, "亮度设置", OLED_8X16);
 }
 
 // 设置界面选项标志位
@@ -242,7 +242,7 @@ int SettingPage(void)
 				case 1:
 				{
 					Show_SettingPage_UI();
-					OLED_ReverseArea(0, 0, 16, 16);
+					OLED_ReverseArea(  0,  0, 16, 16);
 					OLED_Update();
 					
 					break;
@@ -251,7 +251,7 @@ int SettingPage(void)
 				case 2:
 				{
 					Show_SettingPage_UI();
-					OLED_ReverseArea(0, 16, 96, 16);
+					OLED_ReverseArea(  0, 16, 96, 16);
 					OLED_Update();
 					
 					break;
@@ -260,7 +260,7 @@ int SettingPage(void)
 				case 3:
 				{
 					Show_SettingPage_UI();
-					OLED_ReverseArea(0, 32, 64, 16);
+					OLED_ReverseArea(  0, 32, 64, 16);
 					OLED_Update();
 					
 					break;
@@ -296,7 +296,7 @@ uint8_t move_flag;
 void Menu_Animation(void)
 {
 	OLED_Clear();
-	OLED_ShowImage(42, 10, 44, 44, Frame);
+	OLED_ShowImage( 42, 10, 44, 44, Frame);
 	// 倒数第一个图标到第一个图标
 	if (pre_selection == NUM_SELECTION -1 && targrt_selection == 0)
 	{
