@@ -820,34 +820,14 @@
               <FilePath>.\App\Roll_Clock.h</FilePath>
             </File>
             <File>
-              <FileName>mpu6050_Analysis.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\App\mpu6050_Analysis.c</FilePath>
-            </File>
-            <File>
-              <FileName>mpu6050_Analysis.h</FileName>
+              <FileName>SetTime_page.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\App\mpu6050_Analysis.h</FilePath>
+              <FilePath>.\App\SetTime_page.h</FilePath>
             </File>
             <File>
-              <FileName>LEDFlashlight_page.c</FileName>
+              <FileName>SetTime_page.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\App\LEDFlashlight_page.c</FilePath>
-            </File>
-            <File>
-              <FileName>LEDFlashlight_page.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\App\LEDFlashlight_page.h</FilePath>
-            </File>
-            <File>
-              <FileName>MPU6050_page.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\App\MPU6050_page.c</FilePath>
-            </File>
-            <File>
-              <FileName>MPU6050_page.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\App\MPU6050_page.h</FilePath>
+              <FilePath>.\App\SetTime_page.c</FilePath>
             </File>
             <File>
               <FileName>SetBrightness_page.c</FileName>
@@ -860,16 +840,6 @@
               <FilePath>.\App\SetBrightness_page.h</FilePath>
             </File>
             <File>
-              <FileName>SetTime_page.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\App\SetTime_page.c</FilePath>
-            </File>
-            <File>
-              <FileName>SetTime_page.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\App\SetTime_page.h</FilePath>
-            </File>
-            <File>
               <FileName>StopWatch_page.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\App\StopWatch_page.c</FilePath>
@@ -880,14 +850,54 @@
               <FilePath>.\App\StopWatch_page.h</FilePath>
             </File>
             <File>
-              <FileName>Gradienter_page.c</FileName>
+              <FileName>LEDFlashlight_page.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\App\Gradienter_page.c</FilePath>
+              <FilePath>.\App\LEDFlashlight_page.c</FilePath>
             </File>
             <File>
-              <FileName>Gradienter_page.h</FileName>
+              <FileName>LEDFlashlight_page.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\App\Gradienter_page.h</FilePath>
+              <FilePath>.\App\LEDFlashlight_page.h</FilePath>
+            </File>
+            <File>
+              <FileName>mpu6050_Analysis.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\App\mpu6050_Analysis.c</FilePath>
+            </File>
+            <File>
+              <FileName>mpu6050_Analysis.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\App\mpu6050_Analysis.h</FilePath>
+            </File>
+            <File>
+              <FileName>MPU6050_page.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\App\MPU6050_page.c</FilePath>
+            </File>
+            <File>
+              <FileName>MPU6050_page.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\App\MPU6050_page.h</FilePath>
+            </File>
+            <File>
+              <FileName>Game_page.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\App\Game_page.c</FilePath>
+            </File>
+            <File>
+              <FileName>Game_page.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\App\Game_page.h</FilePath>
+            </File>
+            <File>
+              <FileName>Dino_game.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\App\Dino_game.c</FilePath>
+            </File>
+            <File>
+              <FileName>Dino_game.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\App\Dino_game.h</FilePath>
             </File>
             <File>
               <FileName>Emoji_page.c</FileName>
@@ -898,6 +908,16 @@
               <FileName>Emoji_page.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\App\Emoji_page.h</FilePath>
+            </File>
+            <File>
+              <FileName>Gradienter_page.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\App\Gradienter_page.c</FilePath>
+            </File>
+            <File>
+              <FileName>Gradienter_page.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\App\Gradienter_page.h</FilePath>
             </File>
           </Files>
         </Group>

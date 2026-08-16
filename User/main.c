@@ -62,6 +62,9 @@ void TIM2_IRQHandler(void)
 			IMU_D_and_A_En = 1;
 		}
 		
+		// 小游戏计分
+		Dino_Tick();
+		
 		// 自增,3000清零
 		Time_Count1 = (Time_Count1 >= 3000) ? 0 : Time_Count1 + 1;
 		Time_Count2 = (Time_Count2 >= 3000) ? 0 : Time_Count2 + 1;

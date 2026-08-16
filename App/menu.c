@@ -432,7 +432,7 @@ int Menu(void)
 		else if (menu_falg_temp == 2){MenuToFunction();StopWatch();}
 		else if (menu_falg_temp == 3){MenuToFunction();LED_Flashlight();}
 		else if (menu_falg_temp == 4){MenuToFunction();MPU6050();}
-		else if (menu_falg_temp == 5){}
+		else if (menu_falg_temp == 5){MenuToFunction();Game();}
 		else if (menu_falg_temp == 6){MenuToFunction();Emoji();}
 		else if (menu_falg_temp == 7){MenuToFunction();Gradienter();}
 		

@@ -8,7 +8,7 @@
 
 int Gradienter(void)
 {
-	uint8_t refresh = 1;	// 首帧刷新
+	uint8_t refresh = 1;	// UI刷新标志位
 	float Roll = 0.0f, Pitch = 0.0f;
 	
 	while (1)

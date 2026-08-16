@@ -60,7 +60,7 @@ int MPU6050(void)
 	Time_Count1 = 0;
 	Time_Count2 = 0;
 	
-	uint8_t refresh = 1;	// 首帧刷新
+	uint8_t refresh = 1;	// UI刷新标志位
 	uint8_t page = 0;		// 页面
 	
 	while(1)

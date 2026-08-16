@@ -97,7 +97,7 @@ uint8_t SetBrightness(void)
 	// 日期时间设置界面选项标志位
 	uint8_t set_brightness_flag = 1;
 	
-	uint8_t refresh = 1;	// 显示刷新
+	uint8_t refresh = 1;	// UI刷新标志位
 
 	while(1)
 	{

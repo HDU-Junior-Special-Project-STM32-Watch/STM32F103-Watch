@@ -12,7 +12,7 @@ int LED_Flashlight(void)
 {
 	// 读取当前LED状态：低电平为亮
 	uint8_t led_on = (GPIO_ReadOutputDataBit(GPIOB, GPIO_Pin_15) == Bit_RESET);
-	uint8_t refresh = 1;	// 首帧刷新
+	uint8_t refresh = 1;	// UI刷新标志位
 
 	while(1)
 	{
