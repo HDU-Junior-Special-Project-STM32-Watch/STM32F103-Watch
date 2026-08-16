@@ -8,7 +8,6 @@
 
 #include <stdint.h>
 
-void 	Dino_Tick			(void);
 int 	DinoGame			(void);
 void 	DinoGame_Init		(void);
 

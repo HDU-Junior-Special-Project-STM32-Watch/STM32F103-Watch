@@ -102,7 +102,7 @@ void Show_Dino(void)
 	Key_Check(KEY_NAME_DOWN,KEY_SINGLE);// 下键
 	Key_Check(KEY_NAME_COMFIRM,KEY_SINGLE);// 确认键
 	
-	Jump_Pos = 28 * sin((float)pi*jump_t/1000);
+	Jump_Pos = 28 * sin((float)pi*jump_t/100);
 	
 	// 显示更新
 	if(dino_jump_flag == 0)
@@ -148,13 +148,16 @@ int DinoGame(void)
 	// 时间参考值重置
 	Time_Count1 = 0;
 	Time_Count2 = 0;
+
+	static uint8_t Score_Count = 0, Ground_Count = 0, Cloud_Count = 0;
 	
 	while(1)
 	{
-		if (game_stop_flag == 0 && Time_Count1 >= 10) // 1ms * 10 显示周期
+		if (game_stop_flag == 0 && Time_Count1 >= 40) // 1ms * 40 显示周期
 		{
 			Time_Count1 = 0;
 			
+			// 渲染耗时可能在 15~20ms，显示刷新调用时间间隔需要大于这个值
 			OLED_Clear();
 			Show_Score();
 			Show_Ground();
@@ -183,45 +186,46 @@ int DinoGame(void)
 				return 0;
 			}
 		}
-	}
-}
-
-void Dino_Tick(void)
-{
-	static uint8_t Score_Count, Ground_Count, Cloud_Count;
-	
-	Score_Count ++;
-	Ground_Count ++;
-	Cloud_Count ++;
-	
-	if (Score_Count >= 100) // 100ms
-	{
-		Score_Count = 0;
-		Score ++;
-	}
-	
-	if (Ground_Count >= 20) // 20ms
-	{
-		Ground_Count = 0;
-		Ground_Pos ++;
-		if (Ground_Pos >= 256){Ground_Pos = 0;}
-		Barrier_Pos ++;
-		if (Barrier_Pos >= 144){Barrier_Pos = 0;}
-	}
-	
-	if (Cloud_Count >= 50)	// 50ms
-	{
-		Cloud_Count = 0;
-		Cloud_Pos ++;
-		if (Cloud_Pos >= 200){Cloud_Pos = 0;}
-	}
-	if (dino_jump_flag == 1)
-	{
-		jump_t ++;
-		if (jump_t >= 1000)
+		
+		/* 进程节拍 */ 
+		if (Time_Count2 >= 10)
 		{
-			jump_t = 0;
-			dino_jump_flag = 0;
+			Time_Count2 -= 10;
+			
+			Score_Count ++;
+			Ground_Count ++;
+			Cloud_Count ++;
+			
+			if (Score_Count >= 10) 		// 10ms * 10
+			{
+				Score_Count = 0;
+				Score ++;
+			}
+			
+			if (Ground_Count >= 2) 		// 10ms * 2
+			{
+				Ground_Count = 0;
+				Ground_Pos ++;
+				if (Ground_Pos >= 256){Ground_Pos = 0;}
+				Barrier_Pos ++;
+				if (Barrier_Pos >= 144){Barrier_Pos = 0;}
+			}
+			
+			if (Cloud_Count >= 5)		// 10ms * 5
+			{
+				Cloud_Count = 0;
+				Cloud_Pos ++;
+				if (Cloud_Pos >= 200){Cloud_Pos = 0;}
+			}
+			if (dino_jump_flag == 1) 	// 10ms * 1
+			{
+				jump_t ++;
+				if (jump_t >= 100) 
+				{
+					jump_t = 0;
+					dino_jump_flag = 0;
+				}
+			}
 		}
 	}
 }
@@ -229,5 +233,11 @@ void Dino_Tick(void)
 // 标志位等变量清零
 void DinoGame_Init(void)
 {
-	Score = Ground_Pos = Barrier_Pos = Cloud_Pos = Jump_Pos = 0;
+	// 分数清零
+	Score = 0;
+	// 位置重置
+	Ground_Pos = Barrier_Pos = Cloud_Pos = Jump_Pos = 0;
+	// 跳跃状态重置
+	dino_jump_flag = 0;
+	jump_t = 0;
 }
