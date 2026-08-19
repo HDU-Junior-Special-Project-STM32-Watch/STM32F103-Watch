@@ -820,14 +820,14 @@
               <FilePath>.\App\Roll_Clock.h</FilePath>
             </File>
             <File>
-              <FileName>SetTime_page.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\App\SetTime_page.h</FilePath>
-            </File>
-            <File>
               <FileName>SetTime_page.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\App\SetTime_page.c</FilePath>
+            </File>
+            <File>
+              <FileName>SetTime_page.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\App\SetTime_page.h</FilePath>
             </File>
             <File>
               <FileName>SetBrightness_page.c</FileName>

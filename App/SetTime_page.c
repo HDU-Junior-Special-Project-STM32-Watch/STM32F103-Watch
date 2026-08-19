@@ -65,9 +65,15 @@ int SetYear(void)// 年
 			return 0;
 		}
 		
-		Show_SetTime_FirstUI();
-		OLED_ReverseArea( 24, 16, 32, 16);
-		OLED_Update();
+		if (Time_Count1 >= 100) // 1ms * 100 显示周期
+		{
+			Time_Count1 = 0;
+					
+			MyRTC_ReadTime();
+			Show_SetTime_FirstUI();
+			OLED_ReverseArea( 24, 16, 32, 16);
+			OLED_Update();
+		}
 	}
 }
 
@@ -92,10 +98,15 @@ int SetMonth(void)// 月
 		{
 			return 0;
 		}
-		
-		Show_SetTime_FirstUI();
-		OLED_ReverseArea( 24, 32, 16, 16);
-		OLED_Update();
+		if (Time_Count1 >= 100) // 1ms * 100 显示周期
+		{
+			Time_Count1 = 0;
+					
+			MyRTC_ReadTime();
+			Show_SetTime_FirstUI();
+			OLED_ReverseArea( 24, 32, 16, 16);
+			OLED_Update();
+		}
 	}
 }
 
@@ -122,9 +133,15 @@ int SetDay(void)// 日
 			return 0;
 		}
 		
-		Show_SetTime_FirstUI();
-		OLED_ReverseArea( 24, 48, 16, 16);
-		OLED_Update();
+		if (Time_Count1 >= 100) // 1ms * 100 显示周期
+		{
+			Time_Count1 = 0;
+					
+			MyRTC_ReadTime();
+			Show_SetTime_FirstUI();
+			OLED_ReverseArea( 24, 48, 16, 16);
+			OLED_Update();
+		}
 	}
 }
 
@@ -151,9 +168,15 @@ int SetHour(void)// 时
 			return 0;
 		}
 		
-		Show_SetTime_SecondUI();
-		OLED_ReverseArea( 24, 0, 16, 16);
-		OLED_Update();
+		if (Time_Count1 >= 100) // 1ms * 100 显示周期
+		{
+			Time_Count1 = 0;
+					
+			MyRTC_ReadTime();
+			Show_SetTime_SecondUI();
+			OLED_ReverseArea( 24, 0, 16, 16);
+			OLED_Update();
+		}
 	}
 }
 
@@ -180,9 +203,15 @@ int SetMin(void)// 分
 			return 0;
 		}
 		
-		Show_SetTime_SecondUI();
-		OLED_ReverseArea( 24, 16, 16, 16);
-		OLED_Update();
+		if (Time_Count1 >= 100) // 1ms * 100 显示周期
+		{
+			Time_Count1 = 0;
+			
+			MyRTC_ReadTime();
+			Show_SetTime_SecondUI();
+			OLED_ReverseArea( 24, 16, 16, 16);
+			OLED_Update();
+		}
 	}
 }
 
@@ -209,6 +238,7 @@ int SetSec(void)// 秒
 			return 0;
 		}
 		
+		MyRTC_ReadTime();
 		Show_SetTime_SecondUI();
 		OLED_ReverseArea( 24, 32, 16, 16);
 		OLED_Update();
@@ -228,7 +258,11 @@ uint8_t SetTime(void)
 	// 日期时间设置界面选项标志位
 	uint8_t set_time_flag = 1;
 	
-	uint8_t refresh = 1;	// UI刷新标志位
+	// 时间参考值重置
+	Time_Count1 = 0;
+	Time_Count2 = 0;
+	
+	uint8_t refresh = 1;	// UI刷新标志位（因按键的使用强制刷新）
 
 	while(1)
 	{
@@ -251,27 +285,32 @@ uint8_t SetTime(void)
 		else if (Key_Check(KEY_NAME_COMFIRM,KEY_SINGLE))// 确认键
 		{
 			set_time_flag_temp = set_time_flag;
+			refresh = 1;
 		}
 		
 		/* 功能跳转 */
 		// 返回上一级菜单
 		if (set_time_flag_temp == 1){OLED_Clear();return 0;}
 		// 更改"年"
-		else if (set_time_flag_temp == 2){SetYear();  refresh = 1;}
+		else if (set_time_flag_temp == 2){SetYear();refresh = 1;}
 		// 更改"月"
-		else if (set_time_flag_temp == 3){SetMonth(); refresh = 1;}
+		else if (set_time_flag_temp == 3){SetMonth();refresh = 1;}
 		// 更改"日"
-		else if (set_time_flag_temp == 4){SetDay();   refresh = 1;}
+		else if (set_time_flag_temp == 4){SetDay();refresh = 1;}
 		// 更改"时"
-		else if (set_time_flag_temp == 5){SetHour();  refresh = 1;}
+		else if (set_time_flag_temp == 5){SetHour();refresh = 1;}
 		// 更改"分"
-		else if (set_time_flag_temp == 6){SetMin();   refresh = 1;}
+		else if (set_time_flag_temp == 6){SetMin();refresh = 1;}
 		// 更改"秒"
-		else if (set_time_flag_temp == 7){SetSec();   refresh = 1;}
+		else if (set_time_flag_temp == 7){SetSec();refresh = 1;}
 		
 		/* 显示更新 */
-		if (refresh)
+		if (Time_Count1 >= 100 || refresh == 1) // 1ms * 100 显示周期 || 按键刷新
 		{
+			Time_Count1 = 0;
+			refresh = 0;
+			
+			MyRTC_ReadTime();
 			switch(set_time_flag)
 			{
 				// 光标在第一页第一行"回车"键
@@ -345,7 +384,6 @@ uint8_t SetTime(void)
 					break;
 				}	
 			}
-			refresh = 0;
 		}
 	}
 }

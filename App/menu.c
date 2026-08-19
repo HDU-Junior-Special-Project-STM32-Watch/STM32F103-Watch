@@ -132,8 +132,11 @@ int First_Page_Clock(void)
 	OLED_UpdateArea( 16, 16, 96, 24);
 #endif	
 	
-
-	uint8_t power_on = 1;	// 显示刷新
+	// 时间参考值重置
+	Time_Count1 = 0;
+	Time_Count2 = 0;
+	
+	uint8_t power_on = 1;	// 手表开关状态
 
 	while(1)
 	{
@@ -170,7 +173,11 @@ int First_Page_Clock(void)
 		
 		
 		/* 显示更新 */	
-		if (power_on) {Show_Clock_UI(clkflag);}
+		if (power_on && Time_Count1 >= 80) // 1ms * 80 显示周期 （时间数字的滚动动画是直接阻塞占用的）
+		{
+			Time_Count1 = 0;
+			Show_Clock_UI(clkflag);
+		}
 	}
 }
 /**********************************************************/
